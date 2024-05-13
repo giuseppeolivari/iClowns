@@ -8,3 +8,10 @@
 - [ ] CoreML
   - [ ] 30 Photos per object
   - [ ] Training the model
+
+---
+
+[Kaggle](https://www.kaggle.com)
+
+
+[HuggingFace](https://huggingface.co)
