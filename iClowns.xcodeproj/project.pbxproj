@@ -12,6 +12,8 @@
 		0698DE332BF224ED00A5A82B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0698DE322BF224ED00A5A82B /* Assets.xcassets */; };
 		0698DE362BF224ED00A5A82B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0698DE352BF224ED00A5A82B /* Preview Assets.xcassets */; };
 		4473CED42BF24B7B004F271D /* Collectible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4473CED32BF24B7B004F271D /* Collectible.swift */; };
+		4473CED82BF351C7004F271D /* Resnet50Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 4473CED72BF351C7004F271D /* Resnet50Int8LUT.mlmodel */; };
+		4473CEDA2BF35AB3004F271D /* ImageClassificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4473CED92BF35AB3004F271D /* ImageClassificationVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		0698DE322BF224ED00A5A82B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0698DE352BF224ED00A5A82B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4473CED32BF24B7B004F271D /* Collectible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collectible.swift; sourceTree = "<group>"; };
+		4473CED72BF351C7004F271D /* Resnet50Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50Int8LUT.mlmodel; sourceTree = "<group>"; };
+		4473CED92BF35AB3004F271D /* ImageClassificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +58,9 @@
 			isa = PBXGroup;
 			children = (
 				0698DE2E2BF224EC00A5A82B /* iClownsApp.swift */,
-				0698DE302BF224EC00A5A82B /* ContentView.swift */,
-				4473CED32BF24B7B004F271D /* Collectible.swift */,
+				44AF19102BF3765700CF8B07 /* Views */,
+				44AF19112BF3766200CF8B07 /* Models */,
+				44AF190F2BF3762C00CF8B07 /* ImageClassifier */,
 				0698DE322BF224ED00A5A82B /* Assets.xcassets */,
 				0698DE342BF224ED00A5A82B /* Preview Content */,
 			);
@@ -68,6 +73,31 @@
 				0698DE352BF224ED00A5A82B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		44AF190F2BF3762C00CF8B07 /* ImageClassifier */ = {
+			isa = PBXGroup;
+			children = (
+				4473CED92BF35AB3004F271D /* ImageClassificationVM.swift */,
+				4473CED72BF351C7004F271D /* Resnet50Int8LUT.mlmodel */,
+			);
+			path = ImageClassifier;
+			sourceTree = "<group>";
+		};
+		44AF19102BF3765700CF8B07 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0698DE302BF224EC00A5A82B /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		44AF19112BF3766200CF8B07 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4473CED32BF24B7B004F271D /* Collectible.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +172,8 @@
 			files = (
 				0698DE312BF224EC00A5A82B /* ContentView.swift in Sources */,
 				0698DE2F2BF224EC00A5A82B /* iClownsApp.swift in Sources */,
+				4473CED82BF351C7004F271D /* Resnet50Int8LUT.mlmodel in Sources */,
+				4473CEDA2BF35AB3004F271D /* ImageClassificationVM.swift in Sources */,
 				4473CED42BF24B7B004F271D /* Collectible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,7 +308,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iClowns/Preview Content\"";
-				DEVELOPMENT_TEAM = XQMJRDV4LZ;
+				DEVELOPMENT_TEAM = BTQA234622;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -284,6 +316,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,7 +338,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iClowns/Preview Content\"";
-				DEVELOPMENT_TEAM = XQMJRDV4LZ;
+				DEVELOPMENT_TEAM = BTQA234622;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -313,6 +346,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
