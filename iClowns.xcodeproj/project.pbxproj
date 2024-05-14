@@ -11,6 +11,8 @@
 		0698DE312BF224EC00A5A82B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698DE302BF224EC00A5A82B /* ContentView.swift */; };
 		0698DE332BF224ED00A5A82B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0698DE322BF224ED00A5A82B /* Assets.xcassets */; };
 		0698DE362BF224ED00A5A82B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0698DE352BF224ED00A5A82B /* Preview Assets.xcassets */; };
+		06DB08A82BF34F520016CBAC /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DB08A72BF34F520016CBAC /* CameraView.swift */; };
+		06DB08AA2BF3570B0016CBAC /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DB08A92BF3570B0016CBAC /* MapView.swift */; };
 		4473CED42BF24B7B004F271D /* Collectible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4473CED32BF24B7B004F271D /* Collectible.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,6 +22,8 @@
 		0698DE302BF224EC00A5A82B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0698DE322BF224ED00A5A82B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0698DE352BF224ED00A5A82B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		06DB08A72BF34F520016CBAC /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		06DB08A92BF3570B0016CBAC /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		4473CED32BF24B7B004F271D /* Collectible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collectible.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,6 +59,8 @@
 			children = (
 				0698DE2E2BF224EC00A5A82B /* iClownsApp.swift */,
 				0698DE302BF224EC00A5A82B /* ContentView.swift */,
+				06DB08A72BF34F520016CBAC /* CameraView.swift */,
+				06DB08A92BF3570B0016CBAC /* MapView.swift */,
 				4473CED32BF24B7B004F271D /* Collectible.swift */,
 				0698DE322BF224ED00A5A82B /* Assets.xcassets */,
 				0698DE342BF224ED00A5A82B /* Preview Content */,
@@ -142,7 +148,9 @@
 			files = (
 				0698DE312BF224EC00A5A82B /* ContentView.swift in Sources */,
 				0698DE2F2BF224EC00A5A82B /* iClownsApp.swift in Sources */,
+				06DB08AA2BF3570B0016CBAC /* MapView.swift in Sources */,
 				4473CED42BF24B7B004F271D /* Collectible.swift in Sources */,
+				06DB08A82BF34F520016CBAC /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
