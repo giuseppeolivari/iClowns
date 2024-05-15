@@ -64,6 +64,13 @@ func buffer(from image: UIImage) -> CVPixelBuffer? {
   return pixelBuffer
 }
 
+func resizeImage(_ image: UIImage, targetSize: CGSize) -> UIImage {
+    let renderer = UIGraphicsImageRenderer(size: targetSize)
+    return renderer.image { _ in
+        image.draw(in: CGRect(origin: .zero, size: targetSize))
+    }
+}
+
 /// View Model for Image Classification
 class ImageClassificationViewModel : ObservableObject {
     /// The selected item from the photo picker
@@ -79,8 +86,26 @@ class ImageClassificationViewModel : ObservableObject {
     /// - Parameter uiImage: The UIImage to be classified
     func classifyImageMLCore(uiImage: UIImage) {
         // Resize the image to the required size
-        let resizeImage = uiImage.resize(224, 224)
+        //let resizeImage = uiImage.resize(224, 224)
+        let resizeImage = resizeImage(uiImage, targetSize: CGSize(width: 224, height: 224))
         guard let cvPixelBuffer = buffer(from: resizeImage) else { return  }
+        do {
+            // Load the SqueezeNet Core ML model
+            let model = try Resnet50Int8LUT(configuration: MLModelConfiguration())
+            
+            // Perform image classification using the model
+            let prediction = try model.prediction(image: cvPixelBuffer)
+            
+            // Append the classification result to the array
+            self.appendImageClassification(imageData: prediction.classLabel)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    /// Classify the given UIImage using the SqueezeNet Core ML model
+    /// - Parameter uiImage: The UIImage to be classified
+    func classifyImageMLCoreBuffer(cvPixelBuffer: CVPixelBuffer) {
         do {
             // Load the SqueezeNet Core ML model
             let model = try Resnet50Int8LUT(configuration: MLModelConfiguration())
@@ -98,6 +123,7 @@ class ImageClassificationViewModel : ObservableObject {
     /// Append the image classification result to the array and update the UI
     /// - Parameter imageData: The image classification result to be appended
     func appendImageClassification(imageData: String) {
+        print(imageData)
         Just(imageData)
             .receive(on: DispatchQueue.main)
             .sink { value in

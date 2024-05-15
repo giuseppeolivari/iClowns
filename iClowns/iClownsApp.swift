@@ -12,7 +12,7 @@ import SwiftData
 struct iClownsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CameraView()
         }.modelContainer(for: Collectible.self)
     }
 }
