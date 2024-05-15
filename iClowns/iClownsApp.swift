@@ -13,7 +13,6 @@ struct iClownsApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-        }
-        .modelContainer(for: Collectible.self)
+        }.modelContainer(for: Collectible.self)
     }
 }

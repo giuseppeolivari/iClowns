@@ -59,8 +59,6 @@
 			children = (
 				0698DE2E2BF224EC00A5A82B /* iClownsApp.swift */,
 				0698DE302BF224EC00A5A82B /* ContentView.swift */,
-				06DB08A72BF34F520016CBAC /* CameraView.swift */,
-				06DB08A92BF3570B0016CBAC /* MapView.swift */,
 				4473CED32BF24B7B004F271D /* Collectible.swift */,
 				0698DE322BF224ED00A5A82B /* Assets.xcassets */,
 				0698DE342BF224ED00A5A82B /* Preview Content */,
@@ -148,7 +146,6 @@
 			files = (
 				0698DE312BF224EC00A5A82B /* ContentView.swift in Sources */,
 				0698DE2F2BF224EC00A5A82B /* iClownsApp.swift in Sources */,
-				06DB08AA2BF3570B0016CBAC /* MapView.swift in Sources */,
 				4473CED42BF24B7B004F271D /* Collectible.swift in Sources */,
 				06DB08A82BF34F520016CBAC /* CameraView.swift in Sources */,
 			);
