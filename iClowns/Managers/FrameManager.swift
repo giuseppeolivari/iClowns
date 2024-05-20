@@ -5,10 +5,10 @@
 //  Created by Luigi Penza on 15/05/24.
 
 import SwiftUI
+import Observation
 import AVFoundation
 
 @Observable class FrameManager: NSObject {
-    
     static let shared = FrameManager()
     
     var current: CVPixelBuffer?
