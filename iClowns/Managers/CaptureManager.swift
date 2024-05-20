@@ -5,10 +5,10 @@
 //  Created by Luigi Penza on 15/05/24.
 //
 
-import Foundation
+import SwiftUI
 import AVFoundation
 
-class CaptureManager: ObservableObject {
+@Observable class CaptureManager {
     enum Status {
         case unconfigured
         case configured
@@ -18,10 +18,10 @@ class CaptureManager: ObservableObject {
     
     static let shared = CaptureManager()
     
-    @Published var error: CameraError?
+    var error: CameraError?
     
-    @Published var session = AVCaptureSession()
-    private let sessionQueue = DispatchQueue(label: "com.sajjad.cameraSessionQ")
+    var session = AVCaptureSession()
+    private let sessionQueue = DispatchQueue(label: "com.iClowns.cameraSessionQ")
     private let videoOutput = AVCaptureVideoDataOutput()
     private var status: Status = .unconfigured
     
@@ -101,7 +101,7 @@ class CaptureManager: ObservableObject {
         }
         
         //Seting Session Preset
-        session.sessionPreset = .vga640x480
+        session.sessionPreset = .hd1280x720
         
         //Preparing The device as input
         let device = AVCaptureDevice.default(.builtInDualCamera,

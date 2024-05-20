@@ -4,15 +4,16 @@
 //
 //  Created by Luigi Penza on 15/05/24.
 
+import SwiftUI
 import AVFoundation
 
-class FrameManager: NSObject, ObservableObject {
+@Observable class FrameManager: NSObject {
     
     static let shared = FrameManager()
     
-    @Published var current: CVPixelBuffer?
+    var current: CVPixelBuffer?
     
-    let videoOutputQueue = DispatchQueue(label: "com.sajjad.VideoOutPutQ",
+    let videoOutputQueue = DispatchQueue(label: "com.iClowns.VideoOutPutQ",
                                          qos: .userInitiated,
                                          attributes: [],
                                          autoreleaseFrequency: .workItem)
