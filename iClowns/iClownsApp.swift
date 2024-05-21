@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct iClownsApp: App {
+struct iClownsApp: App {    
     var body: some Scene {
         WindowGroup {
             CameraView()

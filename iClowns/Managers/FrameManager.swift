@@ -13,10 +13,8 @@ import AVFoundation
     
     var current: CVPixelBuffer?
     
-    let videoOutputQueue = DispatchQueue(label: "com.iClowns.VideoOutPutQ",
-                                         qos: .userInitiated,
-                                         attributes: [],
-                                         autoreleaseFrequency: .workItem)
+    let videoOutputQueue = DispatchQueue(label: "com.iClowns.VideoOutPutQ", qos: .userInitiated,
+                                         attributes: [], autoreleaseFrequency: .workItem)
     
     private override init() {
         super.init()
@@ -25,18 +23,13 @@ import AVFoundation
 }
 
 extension FrameManager: AVCaptureVideoDataOutputSampleBufferDelegate {
-    func captureOutput(
-        _ output: AVCaptureOutput,
-        didOutput sampleBuffer: CMSampleBuffer,
-        from connection: AVCaptureConnection
-    ) {
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if let buffer = sampleBuffer.imageBuffer {
-            let icViewModel = ImageClassificationViewModel()
+            // modello
             DispatchQueue.main.async {
                 self.current = buffer
-                icViewModel.classifyImageMLCoreBuffer(cvPixelBuffer: buffer)
+                // riconoscimento
             }
         }
     }
 }
-

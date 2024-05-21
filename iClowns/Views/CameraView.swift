@@ -8,6 +8,7 @@ struct CameraView: View {
         }
         .onAppear {
             CaptureManager.shared.controllSession(start: true)
+            FrameManager.shared
         }
         .onDisappear {
             CaptureManager.shared.controllSession(start: false)

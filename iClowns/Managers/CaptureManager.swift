@@ -9,8 +9,7 @@ import SwiftUI
 import Foundation
 import AVFoundation
 
-@Observable
-class CaptureManager {
+@Observable class CaptureManager {
     enum Status {
         case unconfigured
         case configured
@@ -32,18 +31,16 @@ class CaptureManager {
     }
     
     private func config() {
-        print("Checking permissions...")
         checkPermissions()
         sessionQueue.async {
             self.configCaptureSession()
-            //self.session.startRunning()
+            self.session.startRunning()
             self.controllSession(start: true)
         }
     }
     
     func controllSession(start: Bool) {
         guard status == .configured else {
-            print("Session not configured, reconfiguring...")
             self.config()
             return
         }
@@ -51,11 +48,9 @@ class CaptureManager {
         sessionQueue.async {
             if start {
                 if !self.session.isRunning {
-                    print("Starting session...")
                     self.session.startRunning()
                 }
             } else {
-                print("Stopping session...")
                 self.session.stopRunning()
             }
         }
@@ -63,7 +58,6 @@ class CaptureManager {
     
     private func setError(_ error: CameraError?) {
         DispatchQueue.main.async {
-            print(error?.localizedDescription ?? "No error")
             self.error = error
         }
     }
@@ -89,7 +83,6 @@ class CaptureManager {
             setError(.deniedAuthorization)
             
         case .authorized:
-            print("Authorized")
             status = .unconfigured
             
         @unknown default:
@@ -100,7 +93,6 @@ class CaptureManager {
     
     private func configCaptureSession() {
         guard status == .unconfigured else {
-            print("Session already configured or failed.")
             return
         }
       
@@ -110,15 +102,16 @@ class CaptureManager {
         }
 
         // Setting Session Preset
-        session.sessionPreset = .hd1280x720
+        session.sessionPreset = .hd1920x1080
 
         // Preparing the device as input
-        guard let camera = AVCaptureDevice.default(.builtInUltraWideCamera, for: .video, position: .back) else { //TODO: QUI IL PROBLEMA AIUTO
+        guard let device = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInUltraWideCamera], mediaType: .video, position: .back).devices.first else {
             setError(.cameraUnavailable)
             status = .failed
             return
         }
-        
+        let camera = device
+
         do {
             let cameraInput = try AVCaptureDeviceInput(device: camera)
             if session.canAddInput(cameraInput) {
@@ -133,10 +126,11 @@ class CaptureManager {
             status = .failed
             return
         }
-        print("ciao 5")
+        
         if session.canAddOutput(videoOutput) {
             session.addOutput(videoOutput)
-            videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]
+            //videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]
+            videoOutput.videoSettings = [UIImage as String: UIImage]
         } else {
             setError(.cannotAddOutput)
             status = .failed
@@ -144,7 +138,6 @@ class CaptureManager {
         }
 
         status = .configured
-        print("Session configured successfully.")
     }
     
     func set(_ delegate: AVCaptureVideoDataOutputSampleBufferDelegate, queue: DispatchQueue) {
