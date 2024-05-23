@@ -11,6 +11,10 @@ import AVFoundation
 @Observable class FrameManager: NSObject {
     static let shared = FrameManager()
     
+    var counter: Int = 0
+    
+    let icvm = ImageClassificationViewModel()
+    
     var current: CVPixelBuffer?
     
     let videoOutputQueue = DispatchQueue(label: "com.iClowns.VideoOutPutQ", qos: .userInitiated,
@@ -41,13 +45,13 @@ extension FrameManager: AVCaptureVideoDataOutputSampleBufferDelegate {
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if let buffer = sampleBuffer.imageBuffer {
-            let icvm = ImageClassificationViewModel()
             DispatchQueue.main.async {
-                Thread.sleep(forTimeInterval: 1.0)
                 self.current = buffer
-
-                icvm.classifyImageMLCore(uiImage: self.convert(pixelBuffer: buffer)!)
-                // riconoscimento
+                self.counter += 1
+                if (self.counter == 30) {
+                    self.icvm.classifyImageMLCore(uiImage: self.convert(pixelBuffer: buffer)!)
+                    self.counter = 0
+                }
             }
         }
     }
