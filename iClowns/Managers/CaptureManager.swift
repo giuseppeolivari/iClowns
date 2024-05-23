@@ -129,8 +129,7 @@ import AVFoundation
         
         if session.canAddOutput(videoOutput) {
             session.addOutput(videoOutput)
-            //videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]
-            videoOutput.videoSettings = [UIImage as String: UIImage]
+            videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]
         } else {
             setError(.cannotAddOutput)
             status = .failed

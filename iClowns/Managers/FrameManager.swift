@@ -23,11 +23,30 @@ import AVFoundation
 }
 
 extension FrameManager: AVCaptureVideoDataOutputSampleBufferDelegate {
+    func convert(pixelBuffer: CVPixelBuffer) -> UIImage? {
+        // Create a CIImage from the CVPixelBuffer
+        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
+        
+        // Create a CIContext
+        let ciContext = CIContext()
+        
+        // Create a CGImage from the CIImage
+        guard let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent) else {
+            return nil
+        }
+        
+        // Create and return a UIImage from the CGImage
+        return UIImage(cgImage: cgImage)
+    }
+    
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if let buffer = sampleBuffer.imageBuffer {
-            // modello
+            let icvm = ImageClassificationViewModel()
             DispatchQueue.main.async {
+                Thread.sleep(forTimeInterval: 1.0)
                 self.current = buffer
+
+                icvm.classifyImageMLCore(uiImage: self.convert(pixelBuffer: buffer)!)
                 // riconoscimento
             }
         }
