@@ -25,7 +25,7 @@ import AVFoundation
     private let sessionQueue = DispatchQueue(label: "com.iClowns.cameraSessionQ")
     private let videoOutput = AVCaptureVideoDataOutput()
     private var status: Status = .unconfigured
-        
+    
     private init() {
         config()
     }
@@ -95,15 +95,15 @@ import AVFoundation
         guard status == .unconfigured else {
             return
         }
-      
+        
         session.beginConfiguration()
         defer {
             session.commitConfiguration()
         }
-
+        
         // Setting Session Preset
         session.sessionPreset = .hd1920x1080
-
+        
         // Preparing the device as input
         guard let device = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInUltraWideCamera], mediaType: .video, position: .back).devices.first else {
             setError(.cameraUnavailable)
@@ -111,7 +111,7 @@ import AVFoundation
             return
         }
         let camera = device
-
+        
         do {
             let cameraInput = try AVCaptureDeviceInput(device: camera)
             if session.canAddInput(cameraInput) {
@@ -135,7 +135,7 @@ import AVFoundation
             status = .failed
             return
         }
-
+        
         status = .configured
     }
     
