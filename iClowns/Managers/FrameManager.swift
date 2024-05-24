@@ -9,6 +9,10 @@ import Observation
 import AVFoundation
 
 @Observable class FrameManager: NSObject {
+    private let classificationQueue = DispatchQueue(label: "classificationQueue")
+       private var timer: DispatchSourceTimer?
+       private var latestBuffer: CVPixelBuffer?
+    
     static let shared = FrameManager()
     
     var counter: Int = 0
@@ -22,11 +26,13 @@ import AVFoundation
     
     private override init() {
         super.init()
+        startTimer()
         CaptureManager.shared.set(self, queue: videoOutputQueue)
     }
 }
 
 extension FrameManager: AVCaptureVideoDataOutputSampleBufferDelegate {
+
     func convert(pixelBuffer: CVPixelBuffer) -> UIImage? {
         // Create a CIImage from the CVPixelBuffer
         let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
@@ -42,17 +48,39 @@ extension FrameManager: AVCaptureVideoDataOutputSampleBufferDelegate {
         // Create and return a UIImage from the CGImage
         return UIImage(cgImage: cgImage)
     }
-    
+    func startTimer() {
+          timer = DispatchSource.makeTimerSource(queue: classificationQueue)
+          timer?.schedule(deadline: .now(), repeating: 1.0)
+          timer?.setEventHandler { [weak self] in
+              self?.classifyLatestFrame()
+          }
+          timer?.resume()
+      }
+
+      func stopTimer() {
+          timer?.cancel()
+          timer = nil
+      }
+
+      func classifyLatestFrame() {
+          guard let buffer = latestBuffer else { return }
+          if let uiImage = convert(pixelBuffer: buffer) {
+              DispatchQueue.main.async {
+                  self.icvm.classifyImageMLCore(uiImage: uiImage)
+              }
+          }
+      }
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if let buffer = sampleBuffer.imageBuffer {
-            DispatchQueue.main.async {
-                self.current = buffer
-                self.counter += 1
-                if (self.counter == 30) {
-                    self.icvm.classifyImageMLCore(uiImage: self.convert(pixelBuffer: buffer)!)
-                    self.counter = 0
-                }
-            }
-        }
-    }
+                   DispatchQueue.main.async {
+                       self.current = buffer
+                   }
+
+                   classificationQueue.async {
+                       self.latestBuffer = buffer
+                   }
+               }
+      }
+
+      
 }
