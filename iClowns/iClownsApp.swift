@@ -14,7 +14,7 @@ import SwiftData
 struct iClownsApp: App {    
     var body: some Scene {
         WindowGroup {
-            CameraView()
+            MapView()
         }.modelContainer(for: Collectible.self)
     }
 }
