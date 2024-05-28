@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CameraView: View {
     @State var icvm = ImageClassificationViewModel()
+    
     var body: some View {
         ZStack {
             CameraPreviewHolder(captureSession: CaptureManager.shared.session)

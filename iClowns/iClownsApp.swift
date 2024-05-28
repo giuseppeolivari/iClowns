@@ -8,13 +8,14 @@
 import SwiftUI
 import SwiftData
 
-//TODO: Richiesta per posizione in background 
+//TODO: Richiesta per posizione in background
 
 @main
-struct iClownsApp: App {    
+struct iClownsApp: App {
+    @Query var collectibles: [Collectible]
     var body: some Scene {
         WindowGroup {
-            MapView()
+            ContentView()
         }.modelContainer(for: Collectible.self)
     }
 }

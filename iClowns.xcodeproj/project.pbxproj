@@ -13,6 +13,7 @@
 		0698DE362BF224ED00A5A82B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0698DE352BF224ED00A5A82B /* Preview Assets.xcassets */; };
 		447397712C013CD200916D2B /* LocationMangerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447397702C013CD200916D2B /* LocationMangerDelegate.swift */; };
 		447397732C013CF200916D2B /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447397722C013CF200916D2B /* LocationDetailView.swift */; };
+		447397752C05D9EB00916D2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447397742C05D9EB00916D2B /* ContentView.swift */; };
 		4473CED42BF24B7B004F271D /* Collectible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4473CED32BF24B7B004F271D /* Collectible.swift */; };
 		44AF19172BF4A40000CF8B07 /* ImageClassifierVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AF19162BF4A40000CF8B07 /* ImageClassifierVM.swift */; };
 		44AF19192BF4A42900CF8B07 /* Resnet50Int8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 44AF19182BF4A42900CF8B07 /* Resnet50Int8LUT.mlmodel */; };
@@ -30,6 +31,7 @@
 		0698DE352BF224ED00A5A82B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		447397702C013CD200916D2B /* LocationMangerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMangerDelegate.swift; sourceTree = "<group>"; };
 		447397722C013CF200916D2B /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
+		447397742C05D9EB00916D2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4473CED32BF24B7B004F271D /* Collectible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collectible.swift; sourceTree = "<group>"; };
 		44AF19162BF4A40000CF8B07 /* ImageClassifierVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifierVM.swift; sourceTree = "<group>"; };
 		44AF19182BF4A42900CF8B07 /* Resnet50Int8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50Int8LUT.mlmodel; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				44AF191C2BF4A86300CF8B07 /* CameraView.swift */,
 				44AF19222BF4C03B00CF8B07 /* CameraPreviewView.swift */,
 				447397722C013CF200916D2B /* LocationDetailView.swift */,
+				447397742C05D9EB00916D2B /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				44AF191F2BF4AC6D00CF8B07 /* CaptureManager.swift in Sources */,
 				0698DE2F2BF224EC00A5A82B /* iClownsApp.swift in Sources */,
 				44AF19172BF4A40000CF8B07 /* ImageClassifierVM.swift in Sources */,
+				447397752C05D9EB00916D2B /* ContentView.swift in Sources */,
 				44AF191D2BF4A86300CF8B07 /* CameraView.swift in Sources */,
 				4473CED42BF24B7B004F271D /* Collectible.swift in Sources */,
 				447397712C013CD200916D2B /* LocationMangerDelegate.swift in Sources */,
@@ -342,7 +346,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iClowns/Preview Content\"";
-				DEVELOPMENT_TEAM = 2GK6HNH46H;
+				DEVELOPMENT_TEAM = BTQA234622;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iClowns/Info.plist;
@@ -374,7 +378,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iClowns/Preview Content\"";
-				DEVELOPMENT_TEAM = 2GK6HNH46H;
+				DEVELOPMENT_TEAM = BTQA234622;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iClowns/Info.plist;

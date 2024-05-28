@@ -9,22 +9,24 @@ import Foundation
 import SwiftData
 
 @Model class Collectible {
-    var name: String
-    var info: String
+    var title: String
+    var subtitle: String
+    
     var image: String
-    var unlocked: Bool
     var category: String
+    
     var latitude: Double
     var longitude: Double
     
-    init(name: String, info: String, image: String, unlocked: Bool, category: String, latitude: Double, longitude: Double) {
-        self.name = name
-        self.info = info
+    var curiosity: String
+    
+    init(title: String, subtitle: String, image: String, category: String, latitude: Double, longitude: Double, curiosity: String) {
+        self.title = title
+        self.subtitle = subtitle
         self.image = image
-        self.unlocked = unlocked
         self.category = category
         self.latitude = latitude
         self.longitude = longitude
+        self.curiosity = curiosity
     }
-    
 }
