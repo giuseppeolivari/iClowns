@@ -8,70 +8,68 @@
 import Foundation
 import Combine
 import Vision
-import VisionKit
-import SwiftUI
-import PhotosUI
+import UIKit
 
-// Resize uiImage
-public extension UIImage {
-    /// Resize image while keeping the aspect ratio. Original image is not modified.
-    func resize(_ width: Int, _ height: Int) -> UIImage {
-        // Keep aspect ratio
-        let maxSize = CGSize(width: width, height: height)
-
-        let availableRect = AVFoundation.AVMakeRect(
-            aspectRatio: self.size,
-            insideRect: .init(origin: .zero, size: maxSize)
-        )
-        let targetSize = availableRect.size
-
-        // Set scale of renderer so that 1pt == 1px
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = 1
-        let renderer = UIGraphicsImageRenderer(size: targetSize, format: format)
-
-        // Resize the image
-        let resized = renderer.image { _ in
-            self.draw(in: CGRect(origin: .zero, size: targetSize))
-        }
-
-        return resized
+extension UIImage {
+    func resizeImageTo(size: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        self.draw(in: CGRect(origin: CGPoint.zero, size: size))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return resizedImage
     }
-}
-// Buffer uiImage
-func buffer(from image: UIImage) -> CVPixelBuffer? {
-  let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
-  var pixelBuffer : CVPixelBuffer?
-  let status = CVPixelBufferCreate(kCFAllocatorDefault, Int(image.size.width), Int(image.size.height), kCVPixelFormatType_32ARGB, attrs, &pixelBuffer)
-  guard (status == kCVReturnSuccess) else {
-    return nil
-  }
-
-  CVPixelBufferLockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
-  let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer!)
-
-  let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
-  let context = CGContext(data: pixelData, width: Int(image.size.width), height: Int(image.size.height), bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
-
-  context?.translateBy(x: 0, y: image.size.height)
-  context?.scaleBy(x: 1.0, y: -1.0)
-
-  UIGraphicsPushContext(context!)
-  image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
-  UIGraphicsPopContext()
-  CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
-
-  return pixelBuffer
+    
+    func convertToBuffer() -> CVPixelBuffer? {
+        
+        let attributes = [
+            kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue,
+            kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue
+        ] as CFDictionary
+        
+        var pixelBuffer: CVPixelBuffer?
+        
+        let status = CVPixelBufferCreate(
+            kCFAllocatorDefault, Int(self.size.width),
+            Int(self.size.height),
+            kCVPixelFormatType_32ARGB,
+            attributes,
+            &pixelBuffer)
+        
+        guard (status == kCVReturnSuccess) else {
+            return nil
+        }
+        
+        CVPixelBufferLockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+        
+        let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer!)
+        let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        let context = CGContext(
+            data: pixelData,
+            width: Int(self.size.width),
+            height: Int(self.size.height),
+            bitsPerComponent: 8,
+            bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer!),
+            space: rgbColorSpace,
+            bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
+        
+        context?.translateBy(x: 0, y: self.size.height)
+        context?.scaleBy(x: 1.0, y: -1.0)
+        
+        UIGraphicsPushContext(context!)
+        self.draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+        UIGraphicsPopContext()
+        
+        CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+        
+        return pixelBuffer
+    }
 }
 
 /// View Model for Image Classification
-class ImageClassificationViewModel : ObservableObject {
-    /// The selected item from the photo picker
-    @Published var photoPickerItem : PhotosPickerItem? = nil
-    /// The UIImage representation of the selected image
-    @Published var uiImage : UIImage?
+@Observable class ImageClassificationViewModel {
     /// An array to store the image classification results
-    @Published var imageClassificationText: [String] = []
+    var imageClassificationText: [String] = []
     /// Set to hold Combine cancellable objects
     private var cancellable = Set<AnyCancellable>()
     
@@ -79,8 +77,10 @@ class ImageClassificationViewModel : ObservableObject {
     /// - Parameter uiImage: The UIImage to be classified
     func classifyImageMLCore(uiImage: UIImage) {
         // Resize the image to the required size
-        let resizeImage = uiImage.resize(224, 224)
-        guard let cvPixelBuffer = buffer(from: resizeImage) else { return  }
+        //guard let cvPixelBuffer = buffer(from: uiImage) else { return  }
+        let resizeImage = uiImage.resizeImageTo(size: CGSize(width: 224, height: 224))
+        guard let cvPixelBuffer = resizeImage?.convertToBuffer() else { return  }
+        
         do {
             // Load the SqueezeNet Core ML model
             let model = try Resnet50Int8LUT(configuration: MLModelConfiguration())
@@ -97,7 +97,7 @@ class ImageClassificationViewModel : ObservableObject {
     
     /// Append the image classification result to the array and update the UI
     /// - Parameter imageData: The image classification result to be appended
-    func appendImageClassification(imageData: String) {
+    private func appendImageClassification(imageData: String) {
         Just(imageData)
             .receive(on: DispatchQueue.main)
             .sink { value in

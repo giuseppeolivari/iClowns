@@ -1,63 +1,37 @@
 //
-//  ContentView.swift
+//  ContentViwe.swift
 //  iClowns
 //
-//  Created by Giuseppe Olivari on 13/05/24.
+//  Created by Luigi Penza on 28/05/24.
 //
 
+import Foundation
 import SwiftUI
-import PhotosUI
+import SwiftData
 
 struct ContentView: View {
-    @StateObject private var icViewModel = ImageClassificationViewModel()
+    @Environment(\.modelContext) private var context
+    @Query var collectibles: [Collectible]
+    
     
     var body: some View {
-        VStack(spacing: 16) {
-            Image(uiImage: icViewModel.uiImage ?? UIImage(imageLiteralResourceName: "cat"))
-                .resizable()
-                .frame(width:300,height:400)
-                .cornerRadius(15)
-            
-            PhotosPicker("Select photo", selection: $icViewModel.photoPickerItem,matching: .all(of: [.images]))
-            
-            Button {
-                icViewModel.classifyImageMLCore(uiImage: icViewModel.uiImage ?? UIImage(imageLiteralResourceName: "cat"))
-            } label: {
-                Text("Classify Image")
-                    .padding()
-                    .foregroundColor(.yellow)
-                    .background(.black)
-                    .cornerRadius(8)
+        List {
+            ForEach(collectibles) { collectible in
+                Text(collectible.title)
             }
-
-            Text(icViewModel.imageClassificationText.first ?? "")
-            Text(icViewModel.imageClassificationText.last ?? "")
         }
-        .onChange(of: icViewModel.photoPickerItem, perform: { newValue in
-            Task {
-                do{
-                    
-                    let data = try await icViewModel.photoPickerItem?.loadTransferable(type: Data.self)
-                    
-                    guard let unwrapData = data else {
-                        print("Error")
-                        return
-                        
-                    }
-                    
-                    icViewModel.uiImage = UIImage(data: unwrapData)
-
-                }catch let error{
-                    print(error.localizedDescription)
-                }
-                
-            }
-        })
-        .navigationTitle("Image Classification")
-        .navigationBarTitleDisplayMode(.inline)
+        
+        
+        Button("Ciao") {
+            context.insert(Collectible(
+                title: "O’ Curniciell",
+                subtitle: "Il cornicello Napoletano",
+                image: "Stamp",
+                category: "Popular Beliefs",
+                latitude: 40.850077,
+                longitude: 14.257811,
+                curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
+            ))
+        }
     }
-}
-
-#Preview {
-    ContentView()
 }
