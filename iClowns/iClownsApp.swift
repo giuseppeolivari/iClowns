@@ -15,7 +15,7 @@ struct iClownsApp: App {
     @Query var collectibles: [Collectible]
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MapView()
         }.modelContainer(for: Collectible.self)
     }
 }

@@ -19,7 +19,7 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
         self.manager = CLLocationManager()
         super.init()
         self.manager.delegate = self
-        self.manager.requestAlwaysAuthorization() // Richiedi autorizzazione "Always"
+        self.manager.requestAlwaysAuthorization() // Richiedi autorizzazione  e scegli Always
         setupGeofences(geofenceRadius: geofenceRadius)
         requestNotificationPermission()
     }
@@ -83,6 +83,8 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
         print("Location manager failed with error: \(error.localizedDescription)")
     }
 }
+
+
 
 
 

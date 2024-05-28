@@ -24,7 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0698DE2B2BF224EC00A5A82B /* iClowns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iClowns.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0698DE2B2BF224EC00A5A82B /* WonderSeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WonderSeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0698DE2E2BF224EC00A5A82B /* iClownsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iClownsApp.swift; sourceTree = "<group>"; };
 		0698DE302BF224EC00A5A82B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		0698DE322BF224ED00A5A82B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		0698DE2C2BF224EC00A5A82B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0698DE2B2BF224EC00A5A82B /* iClowns.app */,
+				0698DE2B2BF224EC00A5A82B /* WonderSeek.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,9 +134,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0698DE2A2BF224EC00A5A82B /* iClowns */ = {
+		0698DE2A2BF224EC00A5A82B /* WonderSeek */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0698DE392BF224ED00A5A82B /* Build configuration list for PBXNativeTarget "iClowns" */;
+			buildConfigurationList = 0698DE392BF224ED00A5A82B /* Build configuration list for PBXNativeTarget "WonderSeek" */;
 			buildPhases = (
 				0698DE272BF224EC00A5A82B /* Sources */,
 				0698DE282BF224EC00A5A82B /* Frameworks */,
@@ -146,9 +146,9 @@
 			);
 			dependencies = (
 			);
-			name = iClowns;
+			name = WonderSeek;
 			productName = iClowns;
-			productReference = 0698DE2B2BF224EC00A5A82B /* iClowns.app */;
+			productReference = 0698DE2B2BF224EC00A5A82B /* WonderSeek.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -166,7 +166,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0698DE262BF224EC00A5A82B /* Build configuration list for PBXProject "iClowns" */;
+			buildConfigurationList = 0698DE262BF224EC00A5A82B /* Build configuration list for PBXProject "WonderSeek" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -179,7 +179,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0698DE2A2BF224EC00A5A82B /* iClowns */,
+				0698DE2A2BF224EC00A5A82B /* WonderSeek */,
 			);
 		};
 /* End PBXProject section */
@@ -346,11 +346,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iClowns/Preview Content\"";
-				DEVELOPMENT_TEAM = BTQA234622;
+				DEVELOPMENT_TEAM = XQMJRDV4LZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iClowns/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = Strunz;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = test2;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ok;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -362,8 +364,12 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.giuseppeolivari.prova.iClowns;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giuseppeolivari.iClowns;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -378,11 +384,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iClowns/Preview Content\"";
-				DEVELOPMENT_TEAM = BTQA234622;
+				DEVELOPMENT_TEAM = XQMJRDV4LZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iClowns/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = Strunz;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = test2;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ok;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -394,8 +402,12 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.giuseppeolivari.prova.iClowns;
+				PRODUCT_BUNDLE_IDENTIFIER = com.giuseppeolivari.iClowns;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -405,7 +417,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0698DE262BF224EC00A5A82B /* Build configuration list for PBXProject "iClowns" */ = {
+		0698DE262BF224EC00A5A82B /* Build configuration list for PBXProject "WonderSeek" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0698DE372BF224ED00A5A82B /* Debug */,
@@ -414,7 +426,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0698DE392BF224ED00A5A82B /* Build configuration list for PBXNativeTarget "iClowns" */ = {
+		0698DE392BF224ED00A5A82B /* Build configuration list for PBXNativeTarget "WonderSeek" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0698DE3A2BF224ED00A5A82B /* Debug */,

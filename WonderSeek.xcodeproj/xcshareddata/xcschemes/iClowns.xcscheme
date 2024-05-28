@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0698DE2A2BF224EC00A5A82B"
-               BuildableName = "iClowns.app"
-               BlueprintName = "iClowns"
-               ReferencedContainer = "container:iClowns.xcodeproj">
+               BuildableName = "WonderSeek.app"
+               BlueprintName = "WonderSeek"
+               ReferencedContainer = "container:WonderSeek.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0698DE2A2BF224EC00A5A82B"
-            BuildableName = "iClowns.app"
-            BlueprintName = "iClowns"
-            ReferencedContainer = "container:iClowns.xcodeproj">
+            BuildableName = "WonderSeek.app"
+            BlueprintName = "WonderSeek"
+            ReferencedContainer = "container:WonderSeek.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0698DE2A2BF224EC00A5A82B"
-            BuildableName = "iClowns.app"
-            BlueprintName = "iClowns"
-            ReferencedContainer = "container:iClowns.xcodeproj">
+            BuildableName = "WonderSeek.app"
+            BlueprintName = "WonderSeek"
+            ReferencedContainer = "container:WonderSeek.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

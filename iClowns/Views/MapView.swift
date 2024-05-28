@@ -12,11 +12,11 @@ import UserNotifications
 struct Attrazioni{
     var cordinata = CLLocationCoordinate2D()
     var raggio = CLLocationDistance()
-    
     init(cordinata: CLLocationCoordinate2D, raggio: CLLocationDistance) {
        self.cordinata = cordinata
        self.raggio = raggio
      }
+   
 }
 
 extension CLLocationCoordinate2D {
@@ -26,21 +26,34 @@ extension CLLocationCoordinate2D {
     static let attrazione44 = Attrazioni(cordinata:CLLocationCoordinate2D(latitude: 40.852447,  longitude: 14.258966), raggio: 15.0) //duomo san gennaro
     static let attrazione55 = Attrazioni(cordinata:CLLocationCoordinate2D(latitude: 40.851484,  longitude: 14.258777), raggio: 400.0) //via dei tribunali
     /* static let attrazione66 = Attrazioni(cordinata:CLLocationCoordinate2D(latitude: 41.0689236,  longitude: 14.6351510), raggio: 50.0) //test */
+ 
 }
 
+
+
 struct MapView: View {
+    
+    
+    
     let manager = LocationManagerDelegate()
     
     @State private var cameraPosition: MapCameraPosition = .userLocation(fallback: .automatic)
     
     @State var selectedTag: Int?
     
+    
+    
     var body: some View {
         NavigationStack{
             Map(position: $cameraPosition, selection: $selectedTag) {
+                
                 UserAnnotation()
+                
+                
                 Marker("Attraction", systemImage: "figure.wave", coordinate: .attrazione11.cordinata) //murales maradona
                     .tag(1)
+                
+                
                 Marker("Attraction", systemImage: "figure.wave", coordinate: .attrazione22.cordinata) //cimitero fontanelle
                     .tag(2)
                 Marker("Attraction", systemImage: "figure.wave", coordinate: .attrazione33.cordinata)
@@ -49,7 +62,13 @@ struct MapView: View {
                     .tag(4)
                 Marker("Attraction", systemImage: "figure.wave", coordinate: .attrazione55.cordinata)
                     .tag(6)
+               
+                
+                
+                
             }
+            
+            //.mapStyle(.standard(elevation: .realistic))
             .mapStyle(.standard(pointsOfInterest: .excludingAll))
             .rotation3DEffect(.degrees(90), axis: (x: 0, y: 0, z: 0))
             .mapControls{
@@ -57,7 +76,12 @@ struct MapView: View {
                 MapPitchToggle()
                 MapCompass()
                 MapScaleView()
+                
             }
+            
+            
+            
+            
             
             NavigationLink(
                 destination: LocationDetailView(selectedTag: $selectedTag),
@@ -65,9 +89,14 @@ struct MapView: View {
                 selection: $selectedTag,
                 label: { EmptyView() }
             )
+            
+            
+            
         }
+        
     }
 }
+
 
 #Preview {
     MapView()
