@@ -12,144 +12,146 @@ import SwiftData
 struct LocationDetailView: View {
     @Binding var selectedTag: Int?
     
-    static var title: String = "O' Curnciell"
-    @Query(filter: #Predicate<Collectible> { collectible in
+    static var title: String = "O’ Curniciell"
+    /*@Query(filter: #Predicate<Collectible> { collectible in
         collectible.title == title
-    }) var collectibles: [Collectible]
+    }) var collectibles: [Collectible]*/
+    @Query var collectibles: [Collectible]
     
     var body: some View {
-        if let collectible = collectibles.first {
-            ZStack{
-                Color(hex: "1C1C1E")
-                    .ignoresSafeArea(edges: .all)
-                
-                GeometryReader { proxy in
-                    /* TOP OF THE VIEW */
-                    Group{
-                        Text(collectible.title)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-                            .position( x: proxy.size.width / 2.5 ,
-                                       y: proxy.size.height / 15)
-                        
-                        Text(collectible.subtitle)
-                            .font(.headline)
-                            .foregroundColor(Color.white)
-                            .position(x: proxy.size.width / 5 ,
-                                      y: proxy.size.height / 8
-                            )
-                        
-                        Rectangle()
-                            .frame(width: 340.0, height: 2.0)
-                            .foregroundColor(.white)
-                            .position( x:proxy.size.width / 2 ,
-                                       y:proxy.size.height / 6)
-                    }
+        ForEach(collectibles) { collectible in
+            if collectible.title == LocationDetailView.title {
+                ZStack{
+                    Color(hex: "1C1C1E")
+                        .ignoresSafeArea(edges: .all)
                     
-                    /* MID OF THE VIEW */
-                    Image(collectible.image)
-                        .frame(width: 150.0, height: 250.0)
-                        .position( x:proxy.size.width / 4 ,
-                                   y:proxy.size.height / 2.55)
-                        .foregroundColor(.white)
-                    
-                    /* RIGHT SIDE */
-                    RoundedRectangle(cornerRadius: 5)
-                        .frame(width: 200, height: 25.0)
-                        .foregroundColor(Color(hex: "684298"))
-                        .position( x: proxy.size.width / 1.3 ,
-                                   y: proxy.size.height / 4)
-                    
-                    RoundedRectangle(cornerRadius: 5)
-                        .frame(width: 200, height: 25.0)
-                        .foregroundColor(Color(hex: "684298"))
-                        .position( x: proxy.size.width / 1.3 ,
-                                   y: proxy.size.height / 2.9)
-                    
-                    /* TEXT */
-                    Text(" Category ")
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .position(x: proxy.size.width / 1.6,
-                                  y: proxy.size.height / 4)
-                    
-                    Text(" Location ")
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .position(x: proxy.size.width / 1.6,
-                                  y: proxy.size.height / 2.9)
-                    
-                    
-                    /* TEXT PLACEHOLDER */
-                    Text(collectible.category)
-                        .foregroundColor(.white)
-                        .position(x: proxy.size.width / 1.45,
-                                  y: proxy.size.height / 3.4)
-                    
-                    Text("\(collectible.latitude + collectible.longitude)")
-                        .foregroundColor(.white)
-                        .position(x: proxy.size.width / 1.28,
-                                  y: proxy.size.height / 2.59)
-                    
-                    /* ICON GROUP */
-                    Button(action:{
-                        openMap(selectedTag: $selectedTag.wrappedValue)
-                    },label:{
+                    GeometryReader { proxy in
+                        /* TOP OF THE VIEW */
                         Group{
-                            Circle()
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(Color(hex: "EEDDF0"))
-                            Image(systemName: "paperplane.fill")
-                                .foregroundColor(Color(hex: "684298"))
+                            Text(collectible.title)
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.white)
+                                .position( x: proxy.size.width / 2.5 ,
+                                           y: proxy.size.height / 15)
+                            
+                            Text(collectible.subtitle)
+                                .font(.headline)
+                                .foregroundColor(Color.white)
+                                .position(x: proxy.size.width / 5 ,
+                                          y: proxy.size.height / 8
+                                )
+                            
+                            Rectangle()
+                                .frame(width: 340.0, height: 2.0)
+                                .foregroundColor(.white)
+                                .position( x:proxy.size.width / 2 ,
+                                           y:proxy.size.height / 6)
                         }
-                        .position(x:proxy.size.width / 1.8 ,
-                                  y:proxy.size.height / 2.58)
-                    })
-                    
-                    /* BOTTOM SIDE */
-                    Group{
-                        RoundedRectangle(cornerRadius: 5)
-                            .frame(width: 150.0, height: 35.0)
-                            .foregroundColor(Color(hex: "684298"))
-                            .position( x: proxy.size.width / 5.5 ,
-                                       y: proxy.size.height / 1.5)
                         
-                        Rectangle()
-                            .frame(width: 400.0, height: 7)
-                            .foregroundColor(Color(hex: "684298"))
-                            .position( x: proxy.size.width / 2 ,
-                                       y: proxy.size.height / 1.45)
-                        
-                        Text("Curiosity")
-                            .font(.title2)
-                            .bold()
+                        /* MID OF THE VIEW */
+                        Image(collectible.image)
+                            .frame(width: 150.0, height: 250.0)
+                            .position( x:proxy.size.width / 4 ,
+                                       y:proxy.size.height / 2.55)
                             .foregroundColor(.white)
-                            .position( x: proxy.size.width / 6.5 ,
-                                       y: proxy.size.height / 1.5)
                         
-                    }.position( x: proxy.size.height / 4 ,
-                                y: proxy.size.width / 1.14)
-                    
-                    /* SCAN SIDE */
-                    Image("Polygon 2")
+                        /* RIGHT SIDE */
+                        RoundedRectangle(cornerRadius: 5)
+                            .frame(width: 200, height: 25.0)
+                            .foregroundColor(Color(hex: "684298"))
+                            .position( x: proxy.size.width / 1.3 ,
+                                       y: proxy.size.height / 4)
+                        
+                        RoundedRectangle(cornerRadius: 5)
+                            .frame(width: 200, height: 25.0)
+                            .foregroundColor(Color(hex: "684298"))
+                            .position( x: proxy.size.width / 1.3 ,
+                                       y: proxy.size.height / 2.9)
+                        
+                        /* TEXT */
+                        Text(" Category ")
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .position(x: proxy.size.width / 1.6,
+                                      y: proxy.size.height / 4)
+                        
+                        Text(" Location ")
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .position(x: proxy.size.width / 1.6,
+                                      y: proxy.size.height / 2.9)
+                        
+                        
+                        /* TEXT PLACEHOLDER */
+                        Text(collectible.category)
+                            .foregroundColor(.white)
+                            .position(x: proxy.size.width / 1.45,
+                                      y: proxy.size.height / 3.4)
+                        
+                        Text("\(collectible.latitude + collectible.longitude)")
+                            .foregroundColor(.white)
+                            .position(x: proxy.size.width / 1.28,
+                                      y: proxy.size.height / 2.59)
+                        
+                        /* ICON GROUP */
+                        Button(action:{
+                            openMap(selectedTag: $selectedTag.wrappedValue)
+                        },label:{
+                            Group{
+                                Circle()
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(Color(hex: "EEDDF0"))
+                                Image(systemName: "paperplane.fill")
+                                    .foregroundColor(Color(hex: "684298"))
+                            }
+                            .position(x:proxy.size.width / 1.8 ,
+                                      y:proxy.size.height / 2.58)
+                        })
+                        
+                        /* BOTTOM SIDE */
+                        Group{
+                            RoundedRectangle(cornerRadius: 5)
+                                .frame(width: 150.0, height: 35.0)
+                                .foregroundColor(Color(hex: "684298"))
+                                .position( x: proxy.size.width / 5.5 ,
+                                           y: proxy.size.height / 1.5)
+                            
+                            Rectangle()
+                                .frame(width: 400.0, height: 7)
+                                .foregroundColor(Color(hex: "684298"))
+                                .position( x: proxy.size.width / 2 ,
+                                           y: proxy.size.height / 1.45)
+                            
+                            Text("Curiosity")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.white)
+                                .position( x: proxy.size.width / 6.5 ,
+                                           y: proxy.size.height / 1.5)
+                            
+                        }.position( x: proxy.size.height / 4 ,
+                                    y: proxy.size.width / 1.14)
+                        
+                        /* SCAN SIDE */
+                        Image("Polygon 2")
+                            .position( x: proxy.size.width / 2 ,
+                                       y: proxy.size.height / 1.04)
+                        Button(action: {
+                            print("Floating Button Click")
+                        }, label: {
+                            NavigationLink(destination: CameraView()) {
+                                Text("Open View")
+                            }
+                        })
                         .position( x: proxy.size.width / 2 ,
                                    y: proxy.size.height / 1.04)
-                    Button(action: {
-                        print("Floating Button Click")
-                    }, label: {
-                        NavigationLink(destination: CameraView()) {
-                            Text("Open View")
-                        }
-                    })
-                    .position( x: proxy.size.width / 2 ,
-                               y: proxy.size.height / 1.04)
+                    }
                 }
+            } else {
+                Text("No collectible found!")
             }
-        } else {
-            Text("No collectible found!")
         }
-        
     }
 }
 
