@@ -96,22 +96,24 @@ struct LocationDetailView: View {
                                       y: proxy.size.height / 2.59)
                         
                         /* ICON GROUP */
-                        Button(action:{
-                            openMap(selectedTag: $selectedTag.wrappedValue)
-                        },label:{
-                          
+                        Group{
+                            Button(action:{
+                                openMap(selectedTag: $selectedTag.wrappedValue)
+                            },label:{
+                                
                                 ZStack{
                                     Circle()
                                         .frame(width: 30, height: 30)
                                         .foregroundColor(Color(hex: "EEDDF0"))
                                     Image(systemName: "paperplane.fill")
                                         .foregroundColor(Color(hex: "684298"))
+                                    
                                 }
-                               .position(x:proxy.size.width / 1.8 ,
-                                       y:proxy.size.height / 2.58)
-                            
-                        })
-                        
+                                
+                                
+                            })
+                        }.position(x:proxy.size.width / 1.8 ,
+                                   y:proxy.size.height / 2.58)
                         /* BOTTOM SIDE */
                         Group{
                             RoundedRectangle(cornerRadius: 5)
@@ -124,7 +126,7 @@ struct LocationDetailView: View {
                                 .frame(width: 400.0, height: 7)
                                 .foregroundColor(Color(hex: "684298"))
                                 .position( x: proxy.size.width / 2 ,
-                                           y: proxy.size.height / 1.45)
+                                           y: proxy.size.height / 1.456)
                             
                             Text("Curiosity")
                                 .font(.title2)
