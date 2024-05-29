@@ -28,10 +28,18 @@ struct iClownsApp: App {
                 )
             ]
             
-            // try modelContext.delete(model: Collectible.self)
-            for _ in 0..<collectibles.count {
-                //try await Task.sleep(for: .milliseconds(1))
-                //modelContext.insert(collectible[i])
+            let descriptor = FetchDescriptor<Collectible>()
+            var collectiblesCount = 0
+            try modelContext.enumerate(descriptor, block: { collectible in
+                collectiblesCount += 1
+            })
+            #if DEBUG
+            print("Collectibles in the database: ", collectiblesCount)
+            #endif
+            if collectiblesCount != collectibles.count {
+                for i in 0..<collectibles.count {
+                    modelContext.insert(collectibles[i])
+                }
             }
         } catch {
             fatalError("Could not initialize ModelContainer")

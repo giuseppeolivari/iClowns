@@ -19,17 +19,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "09AED7B6-99BC-4BDE-80E2-735F2035260B"
-            shouldBeEnabled = "Yes"
+            uuid = "C83A6F19-9DC3-40CA-940B-134AE62D9EA4"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iClowns/iClownsApp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "init()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C83A6F19-9DC3-40CA-940B-134AE62D9EA4 - ac6dcfa61fa2e878"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WonderSeek.iClownsApp.init() -&gt; WonderSeek.iClownsApp"
+                  moduleName = "WonderSeek"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/luigipenza/Documents/GitHub/iClowns/iClowns/iClownsApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33">
+               </Location>
+               <Location
+                  uuid = "C83A6F19-9DC3-40CA-940B-134AE62D9EA4 - 9857a0729e7f5b96"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (WonderSeek.Collectible) -&gt; () in WonderSeek.iClownsApp.init() -&gt; WonderSeek.iClownsApp"
+                  moduleName = "WonderSeek"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/luigipenza/Documents/GitHub/iClowns/iClowns/iClownsApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
