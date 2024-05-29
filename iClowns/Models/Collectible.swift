@@ -19,7 +19,6 @@ import SwiftData
     var longitude: Double
     
     var curiosity: String
-    
     var unlocked: Bool = false
     
     init(title: String, subtitle: String, image: String, category: String, latitude: Double, longitude: Double, curiosity: String) {
