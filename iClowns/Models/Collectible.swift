@@ -20,6 +20,8 @@ import SwiftData
     
     var curiosity: String
     
+    var unlocked: Bool = false
+    
     init(title: String, subtitle: String, image: String, category: String, latitude: Double, longitude: Double, curiosity: String) {
         self.title = title
         self.subtitle = subtitle

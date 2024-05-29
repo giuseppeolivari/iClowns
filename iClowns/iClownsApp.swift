@@ -12,10 +12,19 @@ import SwiftData
 
 @main
 struct iClownsApp: App {
-    @Query var collectibles: [Collectible]
+    let modelContainer: ModelContainer
+    
+    init() {
+        do {
+            modelContainer = try ModelContainer(for: Collectible.self)
+        } catch {
+            fatalError("Could not initialize ModelContainer")
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
             MapView()
-        }.modelContainer(for: Collectible.self)
+        }.modelContainer(modelContainer)
     }
 }

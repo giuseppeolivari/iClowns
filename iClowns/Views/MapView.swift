@@ -62,10 +62,6 @@ struct MapView: View {
                     .tag(4)
                 Marker("Attraction", systemImage: "figure.wave", coordinate: .attrazione55.cordinata)
                     .tag(6)
-               
-                
-                
-                
             }
             
             //.mapStyle(.standard(elevation: .realistic))
