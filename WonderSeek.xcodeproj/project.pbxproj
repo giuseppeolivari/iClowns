@@ -351,6 +351,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iClowns/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "WonderSeek needs to access the camera";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = test2;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ok;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -389,6 +390,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iClowns/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "WonderSeek needs to access the camera";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = test2;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ok;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
