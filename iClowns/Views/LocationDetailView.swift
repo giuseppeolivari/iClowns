@@ -32,28 +32,29 @@ struct LocationDetailView: View {
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .foregroundColor(Color.white)
-                                .position( x: proxy.size.width / 2.5 ,
-                                           y: proxy.size.height / 15)
+                                .position( x: proxy.size.width / 3.3 ,
+                                           y: proxy.size.height / 150)
+                               
                             
                             Text(collectible.subtitle)
                                 .font(.headline)
                                 .foregroundColor(Color.white)
-                                .position(x: proxy.size.width / 5 ,
-                                          y: proxy.size.height / 8
+                                .position(x: proxy.size.width / 3.3 ,
+                                          y: proxy.size.height / 15
                                 )
                             
                             Rectangle()
                                 .frame(width: 340.0, height: 2.0)
                                 .foregroundColor(.white)
                                 .position( x:proxy.size.width / 2 ,
-                                           y:proxy.size.height / 6)
+                                           y:proxy.size.height / 10)
                         }
                         
                         /* MID OF THE VIEW */
                         Image(collectible.image)
                             .frame(width: 150.0, height: 250.0)
                             .position( x:proxy.size.width / 4 ,
-                                       y:proxy.size.height / 2.55)
+                                       y:proxy.size.height / 3)
                             .foregroundColor(.white)
                         
                         /* RIGHT SIDE */
@@ -61,33 +62,33 @@ struct LocationDetailView: View {
                             .frame(width: 200, height: 25.0)
                             .foregroundColor(Color(hex: "684298"))
                             .position( x: proxy.size.width / 1.3 ,
-                                       y: proxy.size.height / 4)
+                                       y: proxy.size.height / 5)
                         
                         RoundedRectangle(cornerRadius: 5)
                             .frame(width: 200, height: 25.0)
                             .foregroundColor(Color(hex: "684298"))
                             .position( x: proxy.size.width / 1.3 ,
-                                       y: proxy.size.height / 2.9)
+                                       y: proxy.size.height / 3)
                         
                         /* TEXT */
                         Text(" Category ")
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                             .position(x: proxy.size.width / 1.6,
-                                      y: proxy.size.height / 4)
+                                      y: proxy.size.height / 5)
                         
                         Text(" Location ")
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                             .position(x: proxy.size.width / 1.6,
-                                      y: proxy.size.height / 2.9)
+                                      y: proxy.size.height / 3)
                         
                         
                         /* TEXT PLACEHOLDER */
                         Text(collectible.category)
                             .foregroundColor(.white)
-                            .position(x: proxy.size.width / 1.45,
-                                      y: proxy.size.height / 3.4)
+                            .position(x: proxy.size.width / 1.5,
+                                      y: proxy.size.height / 4)
                         
                         Text("\(collectible.latitude + collectible.longitude)")
                             .foregroundColor(.white)
@@ -98,15 +99,17 @@ struct LocationDetailView: View {
                         Button(action:{
                             openMap(selectedTag: $selectedTag.wrappedValue)
                         },label:{
-                            Group{
-                                Circle()
-                                    .frame(width: 30, height: 30)
-                                    .foregroundColor(Color(hex: "EEDDF0"))
-                                Image(systemName: "paperplane.fill")
-                                    .foregroundColor(Color(hex: "684298"))
-                            }
-                            .position(x:proxy.size.width / 1.8 ,
-                                      y:proxy.size.height / 2.58)
+                          
+                                ZStack{
+                                    Circle()
+                                        .frame(width: 30, height: 30)
+                                        .foregroundColor(Color(hex: "EEDDF0"))
+                                    Image(systemName: "paperplane.fill")
+                                        .foregroundColor(Color(hex: "684298"))
+                                }
+                               .position(x:proxy.size.width / 1.8 ,
+                                       y:proxy.size.height / 2.58)
+                            
                         })
                         
                         /* BOTTOM SIDE */
@@ -130,8 +133,16 @@ struct LocationDetailView: View {
                                 .position( x: proxy.size.width / 6.5 ,
                                            y: proxy.size.height / 1.5)
                             
-                        }.position( x: proxy.size.height / 4 ,
-                                    y: proxy.size.width / 1.14)
+                            Text("Lorem ipSDFDZSGVJSHDFJHGSZDHFBAJHSEBFJADGSZBEFJHABEWHRFGVJS<EKHFJYARWGRUFYHJASBEJFYGTAWEFHAWEYJRFGAWHFBhytejgfdbwjeyGFDJHAVRFGHYEWAJGBHKJ-AAAAAAADAFAFFAFAFAFFAaaaaaaaaaaaaaaaaaaaaa")
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.white)
+                                .frame(width: 350, height: 250)
+                                .position( x: proxy.size.width / 2 ,
+                                           y: proxy.size.height / 1.2)
+                                
+                            
+                        }.position( x: proxy.size.height / 3.5 ,
+                                    y: proxy.size.width / 1.5   )
                         
                         /* SCAN SIDE */
                         Image("Polygon 2")
@@ -141,7 +152,8 @@ struct LocationDetailView: View {
                             print("Floating Button Click")
                         }, label: {
                             NavigationLink(destination: CameraView()) {
-                                Text("Open View")
+                                Image("Scan Button")
+                                    .frame(width: 50 , height: 50)
                             }
                         })
                         .position( x: proxy.size.width / 2 ,
@@ -199,3 +211,4 @@ func openMap(selectedTag: Int?) {
         UIApplication.shared.open(url)
     }
 }
+
