@@ -10,8 +10,12 @@
 import Foundation
 import CoreLocation
 import UserNotifications
+import SwiftData
 
 class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDelegate {
+    let container = try! ModelContainer(for: Collectible.self, Attraction.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    var attractions: [Attraction] = []
+    
     let geofenceRadius = 50.0
     let manager: CLLocationManager
     
@@ -25,9 +29,18 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
     }
     
     private func setupGeofences(geofenceRadius : CLLocationDistance) {
-        let coordinates = [CLLocationCoordinate2D.attrazione11, CLLocationCoordinate2D.attrazione22, CLLocationCoordinate2D.attrazione33, CLLocationCoordinate2D.attrazione44, CLLocationCoordinate2D.attrazione55]
-        for coordinate in coordinates {
-            let region = CLCircularRegion(center: coordinate.cordinata, radius: CLLocationDistance(coordinate.raggio), identifier: "\(coordinate.cordinata.latitude),\(coordinate.cordinata.longitude)")
+        let modelContext = ModelContext(container)
+        let descriptor = FetchDescriptor<Attraction>()
+        try! modelContext.enumerate(descriptor, block: { attraction in
+            attractions.append(attraction)
+        })
+        
+        for attraction in attractions {
+            let region = CLCircularRegion(
+                center: attraction.coordinate,
+                radius: CLLocationDistance(attraction.radius),
+                identifier: "\(attraction.latitude),\(attraction.longitude)"
+            )
             region.notifyOnEntry = true
             manager.startMonitoring(for: region)
             print("Started monitoring region: \(region.identifier)")
