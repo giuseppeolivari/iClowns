@@ -14,7 +14,6 @@ struct iClownsApp: App {
     
     init() {
         do {
-            //modelContainer = try ModelContainer(for: [Collectible.self, Attraction.self])
             let configuration = ModelConfiguration(isStoredInMemoryOnly: true)
             modelContainer = try ModelContainer(for: Collectible.self, Attraction.self, configurations: configuration)
             let modelContext = ModelContext(modelContainer)

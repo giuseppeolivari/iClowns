@@ -152,6 +152,18 @@ struct LocationDetailView: View {
                     
                     /* SCAN SIDE */
                     Image("Polygon 2")
+                        .position( x: proxy.size.width / 2 ,
+                                   y: proxy.size.height / 1.04)
+                    Button(action: {
+                        print("Floating Button Click")
+                    }, label: {
+                        NavigationLink(destination: CameraView()) {
+                            Image("Scan Button")
+                                .frame(width: 50 , height: 50)
+                        }
+                    })
+                    .position( x: proxy.size.width / 2 ,
+                               y: proxy.size.height / 1.04)
                 }
             }
         } else {
