@@ -18,12 +18,21 @@ struct MapView: View {
     
     let manager = LocationManagerDelegate()
     
+    //serve solo per quando apri l'app così parte su napoli
+    var napoli: CLLocationCoordinate2D{
+        CLLocationCoordinate2D(
+            latitude: 40.85245,
+            longitude: 14.255862
+                
+        )
+    }
+    
     var body: some View {
         NavigationStack{
-            Map(position: $cameraPosition, selection: $selectedTag) {
+            Map(initialPosition: .region(MKCoordinateRegion(center: napoli, span:(MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.03)))), selection: $selectedTag) {
                 UserAnnotation()
                 ForEach(attractions) { attraction in
-                    Marker("Attraction", systemImage: "figure.wave", coordinate: attraction.coordinate).tag(attraction.id.hashValue)
+                    Marker("Attraction", systemImage: "mappin.and.ellipse.fill", coordinate: attraction.coordinate).tag(attraction.id.hashValue)
                 }
             }
             .mapStyle(.standard(pointsOfInterest: .excludingAll))
