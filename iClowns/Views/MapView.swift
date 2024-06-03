@@ -32,7 +32,7 @@ struct MapView: View {
             Map(initialPosition: .region(MKCoordinateRegion(center: napoli, span:(MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.03)))), selection: $selectedTag) {
                 UserAnnotation()
                 ForEach(attractions) { attraction in
-                    Marker("Attraction", systemImage: "mappin.and.ellipse.fill", coordinate: attraction.coordinate).tag(attraction.id.hashValue)
+                    Marker("Attraction", systemImage: "circle", coordinate: attraction.coordinate).tag(attraction.id.hashValue)
                 }
             }
             .mapStyle(.standard(pointsOfInterest: .excludingAll))

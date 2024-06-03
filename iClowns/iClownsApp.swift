@@ -39,7 +39,7 @@ struct iClownsApp: App {
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
                 ),
                 Collectible(
-                    title: "O’ A capocchij",
+                    title: "O’ A ",
                     subtitle: "Il cornicello Napoletano",
                     image: "Stamp",
                     category: "Popular Beliefs",
@@ -47,7 +47,7 @@ struct iClownsApp: App {
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
                 ),
                 Collectible(
-                    title: "O’ palle",
+                    title: "O’ p",
                     subtitle: "Il cornicello Napoletano",
                     image: "Stamp",
                     category: "Popular Beliefs",
@@ -55,7 +55,7 @@ struct iClownsApp: App {
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
                 ),
                 Collectible(
-                    title: "O’ pisello",
+                    title: "O’ ",
                     subtitle: "Il cornicello Napoletano",
                     image: "Stamp",
                     category: "Popular Beliefs",
@@ -63,7 +63,7 @@ struct iClownsApp: App {
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
                 ),
                 Collectible(
-                    title: "O’ NEGRO",
+                    title: "O’ N",
                     subtitle: "Il cornicello Napoletano",
                     image: "Stamp",
                     category: "Popular Beliefs",
