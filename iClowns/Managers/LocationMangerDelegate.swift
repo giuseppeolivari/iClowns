@@ -60,8 +60,8 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
     private func sendNotification(for region: CLRegion) {
         print("notifica")
         let content = UNMutableNotificationContent()
-        content.title = "Sei vicino a un'attrazione!"
-        content.body = NSString.localizedUserNotificationString(forKey: "Hello_message_body", arguments: nil)
+        content.title = "WonderSeek"
+        content.body = NSString.localizedUserNotificationString(forKey: "There's something interesting nearby!", arguments: nil)
         content.sound = UNNotificationSound.default
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)

@@ -11,6 +11,7 @@
 		0698DE312BF224EC00A5A82B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0698DE302BF224EC00A5A82B /* MapView.swift */; };
 		0698DE332BF224ED00A5A82B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0698DE322BF224ED00A5A82B /* Assets.xcassets */; };
 		0698DE362BF224ED00A5A82B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0698DE352BF224ED00A5A82B /* Preview Assets.xcassets */; };
+		06F0953F2C0F1FF000E37F6D /* Card Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F0953E2C0F1FF000E37F6D /* Card Animation.swift */; };
 		447397712C013CD200916D2B /* LocationMangerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447397702C013CD200916D2B /* LocationMangerDelegate.swift */; };
 		447397732C013CF200916D2B /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447397722C013CF200916D2B /* LocationDetailView.swift */; };
 		447397752C05D9EB00916D2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447397742C05D9EB00916D2B /* ContentView.swift */; };
@@ -31,6 +32,7 @@
 		0698DE302BF224EC00A5A82B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		0698DE322BF224ED00A5A82B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0698DE352BF224ED00A5A82B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		06F0953E2C0F1FF000E37F6D /* Card Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card Animation.swift"; sourceTree = "<group>"; };
 		447397702C013CD200916D2B /* LocationMangerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMangerDelegate.swift; sourceTree = "<group>"; };
 		447397722C013CF200916D2B /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 		447397742C05D9EB00916D2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				44AF19222BF4C03B00CF8B07 /* CameraPreviewView.swift */,
 				447397742C05D9EB00916D2B /* ContentView.swift */,
 				DA6FFB982C0F064A00BA89EC /* PredictionView.swift */,
+				06F0953E2C0F1FF000E37F6D /* Card Animation.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				0698DE312BF224EC00A5A82B /* MapView.swift in Sources */,
 				447397732C013CF200916D2B /* LocationDetailView.swift in Sources */,
 				DA6FFB972C0F04B100BA89EC /* ImageClassificationNapoli.mlmodel in Sources */,
+				06F0953F2C0F1FF000E37F6D /* Card Animation.swift in Sources */,
 				44AF191F2BF4AC6D00CF8B07 /* CaptureManager.swift in Sources */,
 				0698DE2F2BF224EC00A5A82B /* iClownsApp.swift in Sources */,
 				44AF19172BF4A40000CF8B07 /* ImageClassifierVM.swift in Sources */,
@@ -358,7 +362,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iClowns/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "WonderSeek needs to access the camera";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = test2;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ok;
@@ -367,6 +370,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -397,7 +401,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iClowns/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "WonderSeek needs to access the camera";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = test2;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = ok;
@@ -406,6 +409,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
