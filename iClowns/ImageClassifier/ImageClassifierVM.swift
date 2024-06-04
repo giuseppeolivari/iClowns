@@ -69,7 +69,8 @@ extension UIImage {
 /// View Model for Image Classification
 @Observable class ImageClassificationViewModel {
     /// An array to store the image classification results
-    var imageClassificationText: [String] = []
+    var confidenceClassificationText: [String] = []
+    var findStamp : Bool = false
     /// Set to hold Combine cancellable objects
     private var cancellable = Set<AnyCancellable>()
     
@@ -82,14 +83,17 @@ extension UIImage {
         guard let cvPixelBuffer = resizeImage?.convertToBuffer() else { return  }
         
         do {
+           
             // Load the SqueezeNet Core ML model
-            let model = try Resnet50Int8LUT(configuration: MLModelConfiguration())
+            let model = try ImageClassificationNapoli(configuration: MLModelConfiguration())
             
             // Perform image classification using the model
             let prediction = try model.prediction(image: cvPixelBuffer)
             
             // Append the classification result to the array
-            self.appendImageClassification(imageData: prediction.classLabel)
+            self.appendConfidenceClassification(confidence: prediction.targetProbability)
+            
+            
         } catch let error {
             print(error.localizedDescription)
         }
@@ -97,11 +101,17 @@ extension UIImage {
     
     /// Append the image classification result to the array and update the UI
     /// - Parameter imageData: The image classification result to be appended
-    private func appendImageClassification(imageData: String) {
-        Just(imageData)
+    private func appendConfidenceClassification(confidence: [String:Double]) {
+        let confiltr = confidence.filter{ $0.value > 0.99 }
+        
+        let dictionaryString = confiltr.map { "\($0.key)" }.joined(separator: ", ")
+        
+        
+        Just(dictionaryString)
             .receive(on: DispatchQueue.main)
             .sink { value in
-                self.imageClassificationText.append(value)
+                self.confidenceClassificationText.append(value)
+                
             }
             .store(in: &cancellable)
     }

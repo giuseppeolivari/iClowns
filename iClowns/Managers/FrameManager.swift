@@ -66,6 +66,7 @@ extension FrameManager: AVCaptureVideoDataOutputSampleBufferDelegate {
         if let uiImage = convert(pixelBuffer: buffer) {
             DispatchQueue.main.async {
                 self.icvm.classifyImageMLCore(uiImage: uiImage)
+                
             }
         }
     }

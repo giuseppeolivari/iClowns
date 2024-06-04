@@ -14,7 +14,8 @@ struct CameraView: View {
         ZStack {
             CameraPreviewHolder(captureSession: CaptureManager.shared.session)
                 .ignoresSafeArea()
-            Text(FrameManager.shared.icvm.imageClassificationText.last ?? "null")
+               PredictionView()
+               
         }
         .onAppear {
             CaptureManager.shared.controllSession(start: true)
