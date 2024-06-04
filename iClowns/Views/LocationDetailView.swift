@@ -29,27 +29,29 @@ struct LocationDetailView: View {
                 
                 GeometryReader { proxy in
                     /* TOP OF THE VIEW */
-                    Group{
-                        Text(collectible.title)
+            
+                    Text(collectible.title)
+                            .frame(width: 400)
                             .font(.largeTitle)
+                            //.multilineTextAlignment(.leading)
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
-                            .position( x: proxy.size.width / 2.5 ,
+                            .position( x: proxy.size.width / 3.5 ,
                                        y: proxy.size.height / 15)
                         
                         Text(collectible.subtitle)
                             .font(.headline)
                             .foregroundColor(Color.white)
-                            .position(x: proxy.size.width / 5 ,
+                            .position(x: proxy.size.width / 3.5 ,
                                       y: proxy.size.height / 8
                             )
                         
                         Rectangle()
-                            .frame(width: 340.0, height: 2.0)
+                            .frame(width: 350.0, height: 1.0)
                             .foregroundColor(.white)
                             .position( x:proxy.size.width / 2 ,
                                        y:proxy.size.height / 6)
-                    }
+                    
                     
                     /* MID OF THE VIEW */
                     Image(collectible.image)

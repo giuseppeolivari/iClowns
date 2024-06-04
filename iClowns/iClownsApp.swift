@@ -23,15 +23,15 @@ struct iClownsApp: App {
             try modelContext.delete(model: Attraction.self)
             
             let attractions = [
-                Attraction(name: "murales maradona", latitude: 40.841447, longitude: 14.245233, radius: 20.0),
-                Attraction(name: "cimitero fontanelle", latitude: 40.858873, longitude: 14.238852, radius: 20.0),
-                Attraction(name: "san gregorio armeno",latitude: 40.850077, longitude: 14.257811, radius: 100.0),
-                Attraction(name: "duomo san gennaro",latitude: 40.852447,  longitude: 14.258966, radius: 15.0),
-                Attraction(name: "via dei tribunali",latitude: 40.851484,  longitude: 14.258777, radius: 400.0)
+                Attraction(name: "Murales Maradona", latitude: 40.841447, longitude: 14.245233, radius: 20.0),
+                Attraction(name: "Cimitero Fontanelle", latitude: 40.858873, longitude: 14.238852, radius: 20.0),
+                Attraction(name: "San Gregorio Armeno",latitude: 40.850077, longitude: 14.257811, radius: 100.0),
+                Attraction(name: "Duomo San Gennaro",latitude: 40.852447,  longitude: 14.258966, radius: 15.0),
+                Attraction(name: "Via dei Tribunali",latitude: 40.851484,  longitude: 14.258777, radius: 400.0)
             ]
             let collectibles = [
                 Collectible(
-                    title: "O’ Curniciell",
+                    title: "Murales Maradona",
                     subtitle: "Il cornicello Napoletano",
                     image: "Stamp",
                     category: "Popular Beliefs",
@@ -39,7 +39,7 @@ struct iClownsApp: App {
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
                 ),
                 Collectible(
-                    title: "O’ A ",
+                    title: "Cimitero Delle Fontanelle",
                     subtitle: "Il cornicello Napoletano",
                     image: "Stamp",
                     category: "Popular Beliefs",
@@ -47,7 +47,7 @@ struct iClownsApp: App {
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
                 ),
                 Collectible(
-                    title: "O’ p",
+                    title: "San Gregorio Armeno",
                     subtitle: "Il cornicello Napoletano",
                     image: "Stamp",
                     category: "Popular Beliefs",
@@ -55,7 +55,7 @@ struct iClownsApp: App {
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
                 ),
                 Collectible(
-                    title: "O’ ",
+                    title: "Duomo San Gennaro",
                     subtitle: "Il cornicello Napoletano",
                     image: "Stamp",
                     category: "Popular Beliefs",
@@ -63,7 +63,7 @@ struct iClownsApp: App {
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
                 ),
                 Collectible(
-                    title: "O’ N",
+                    title: "Via dei Tribunali",
                     subtitle: "Il cornicello Napoletano",
                     image: "Stamp",
                     category: "Popular Beliefs",
