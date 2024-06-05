@@ -175,10 +175,6 @@ struct LocationDetailView: View {
                     .position( x: proxy.size.width / 2 ,
                                y: proxy.size.height / 1.04)
                 }.navigationTitle(collectible.title)
-                
-
-                    
-                    
             }
         } else {
             Text("No collectible found!")

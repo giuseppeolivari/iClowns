@@ -1,8 +1,8 @@
 //
-//  StampView.swift
-//  Stamps View
+//  CollectibleView.swift
+//  WonderSeek
 //
-//  Created by Carmine Andreozzi on 22/05/24.
+//  Created by Luigi Penza on 05/06/24.
 //
 
 import SwiftUI
