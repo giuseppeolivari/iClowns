@@ -26,6 +26,7 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
         self.manager.requestAlwaysAuthorization() // Richiedi autorizzazione  e scegli Always
         setupGeofences(geofenceRadius: geofenceRadius)
         requestNotificationPermission()
+        
     }
     
     private func setupGeofences(geofenceRadius : CLLocationDistance) {
