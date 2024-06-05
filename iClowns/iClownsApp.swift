@@ -42,7 +42,7 @@ struct iClownsApp: App {
                     title: "Cimitero Delle Fontanelle",
                     subtitle: "Il cornicello Napoletano",
                     image: "Stamp",
-                    category: "Popular Beliefs",
+                    category: "Entertainment",
                     attraction: attractions[1],
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
                 ),
@@ -50,7 +50,7 @@ struct iClownsApp: App {
                     title: "San Gregorio Armeno",
                     subtitle: "Il cornicello Napoletano",
                     image: "Stamp",
-                    category: "Popular Beliefs",
+                    category: "Traditions",
                     attraction: attractions[2],
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
                 ),
