@@ -27,6 +27,7 @@ struct MapView: View {
     }
     
     var body: some View {
+        GeometryReader{ proxy in
         NavigationStack{
             ZStack {
                 Map(initialPosition: .region(MKCoordinateRegion(center: napoli, span:(MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.03)))), selection: $selectedTag) {
@@ -50,6 +51,20 @@ struct MapView: View {
                     selection: $selectedTag,
                     label: { EmptyView() }
                 )
+                //deve andare nella view dei collectible
+                NavigationLink(destination: EmptyView()) {
+            
+                        Image("bottone")
+                            .resizable()
+                            .frame(width: 44, height: 44)
+                            .cornerRadius(7)
+                        
+                    
+                }.position(x: proxy.size.width / 1.25 ,
+                           y: proxy.size.height / 29)
+                
+                
+            }
             }
         }
     }
