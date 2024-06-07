@@ -19,7 +19,6 @@ struct PredictionView: View {
                         .position(x: geometry.size.width/2,y:geometry.size.height/1.4)
                         .foregroundColor(Color(hue: 1.0, saturation: 0.013, brightness: 0.246))
                     
-                    
                     Image("StampsMini")
                         .position(x: geometry.size.width/4.8,y:geometry.size.height/1.4)
                     VStack(alignment: .leading) {
@@ -29,7 +28,8 @@ struct PredictionView: View {
                             Text("Tap for more info")
                                 .foregroundColor(.white)
                         }
-                    }                       .position(x: geometry.size.width/2.1,y:geometry.size.height/1.4)
+                    }
+                    .position(x: geometry.size.width/2.1,y:geometry.size.height/1.4)
                 }
             }
             

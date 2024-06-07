@@ -52,15 +52,27 @@ struct MapView: View {
                         label: { EmptyView() }
                     )
                     
-                    //TODO:  Se aggiungi questo, crasha tutto 
+                    // MARK: se metto empty view top, ma cosi crasha
+                    // potrebbe aver ragione domenico a dire che fa il bordellone con le varie query
+//                    NavigationLink(destination: CollectibleView()) {
+//                        Text("x")
+//                            .foregroundColor(.white)
+//                            .position(x: proxy.size.width / 1.25 , y: proxy.size.height / 29)
+//                    }
+//                    Image("bottone")
+//                        .resizable()
+//                        .frame(width: 44, height: 44)
+//                        .cornerRadius(7)
+//                        .position(x: proxy.size.width / 1.25 , y: proxy.size.height / 29)
+                    
+                    //TODO:  Se aggiungi questo, crasha tutto
                     //deve andare nella view dei collectible
 //                    NavigationLink(destination: CollectibleView()) {
 //                        Image("bottone")
 //                            .resizable()
 //                            .frame(width: 44, height: 44)
 //                            .cornerRadius(7)
-//                    }.position(x: proxy.size.width / 1.25 ,
-//                               y: proxy.size.height / 29)
+//                            .position(x: proxy.size.width / 1.25 , y: proxy.size.height / 29)
                 }
             }
         }
