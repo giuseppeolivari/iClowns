@@ -62,13 +62,13 @@ struct LocationDetailView: View {
                     
                     /* RIGHT SIDE */
                     RoundedRectangle(cornerRadius: 5)
-                        .frame(width: 200, height: 25.0)
+                        .frame(width: 210, height: 25.0)
                         .foregroundColor(Color(hex: "684298"))
                         .position( x: proxy.size.width / 1.3 ,
                                    y: proxy.size.height / 6)
                     
                     RoundedRectangle(cornerRadius: 5)
-                        .frame(width: 200, height: 25.0)
+                        .frame(width: 210, height: 25.0)
                         .foregroundColor(Color(hex: "684298"))
                         .position( x: proxy.size.width / 1.3 ,
                                    y: proxy.size.height / 3.5)
@@ -128,9 +128,10 @@ struct LocationDetailView: View {
                     .position(x:proxy.size.width / 1.8, y:proxy.size.height / 3)
                     
                     /* BOTTOM SIDE */
+                    
                     Group{
                         RoundedRectangle(cornerRadius: 5)
-                            .frame(width: 160.0, height: 35.0)
+                            .frame(width: 220.0, height: 35.0)
                             .foregroundColor(Color(hex: "684298"))
                             .position( x: proxy.size.width / 5.5 ,
                                        y: proxy.size.height / 1.5)
@@ -147,16 +148,15 @@ struct LocationDetailView: View {
                             .position( x: proxy.size.width / 6.5 ,
                                        y: proxy.size.height / 1.5)
                         
-                        
-                        Text(collectible.curiosity)
-                            .frame(width: 350 , height: 300)
-                        // .bold()
-                            .position(x: proxy.size.width / 2 ,
-                                      y: proxy.size.height / 1.2)
-                        
-                        
-                        
-                        
+                        ScrollView {
+                                VStack(alignment: .leading) {
+                                    Text(collectible.curiosity)
+                                }
+                            }.defaultScrollAnchor(.top)
+                            .frame(width: 360 , height: 150)
+                        .position(x: proxy.size.width / 2 ,
+                                  y: proxy.size.height / 1.2)
+                    
                         
                     }.position( x: proxy.size.height / 3.5,
                                 y: proxy.size.width / 1.5)
@@ -181,9 +181,9 @@ struct LocationDetailView: View {
                     })
                     .position( x: proxy.size.width / 2 ,
                                y: proxy.size.height / 1.04)
-//                }
-//                        }
-               
+                    //                }
+                    //                        }
+                    
                 }.navigationTitle(collectible.title)
             }
         } else {
@@ -192,16 +192,16 @@ struct LocationDetailView: View {
     }
 }
 func isOnPosition(manager: LocationManagerDelegate,attr: Collectible) -> Bool{
-   
+    
     if CLLocationManager.locationServicesEnabled() {
-               
+        
         manager.manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.manager.startUpdatingLocation()
-           }
+    }
     if manager.currentLocation?.latitude == attr.relatedAttraction.latitude && manager.currentLocation?.longitude == attr.relatedAttraction.longitude {
         return true
     }
-   
+    
     return false
 }
 extension Color {

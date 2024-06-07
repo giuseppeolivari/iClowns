@@ -23,16 +23,16 @@ struct iClownsApp: App {
             try modelContext.delete(model: Attraction.self)
             
             let attractions = [
-                Attraction(name: "Murales Maradona", latitude: 40.841447, longitude: 14.245233, radius: 20.0),
+                Attraction(name: "Via Emanuele de Deo, 46", latitude: 40.841447, longitude: 14.245233, radius: 20.0),
                 Attraction(name: "Cimitero Fontanelle", latitude: 40.858873, longitude: 14.238852, radius: 20.0),
-                Attraction(name: "San Gregorio Armeno",latitude: 40.850077, longitude: 14.257811, radius: 100.0),
-                Attraction(name: "Duomo San Gennaro",latitude: 40.852447,  longitude: 14.258966, radius: 15.0),
+                Attraction(name: "Via S. Gregorio Armeno, 14-52",latitude: 40.850077, longitude: 14.257811, radius: 100.0),
+                Attraction(name: "Via Duomo, 147 ",latitude: 40.852447,  longitude: 14.258966, radius: 15.0),
                 Attraction(name: "Via dei Tribunali",latitude: 40.851484,  longitude: 14.258777, radius: 400.0)
             ]
             let collectibles = [
                 Collectible(
-                    title: "Murales Maradona",
-                    subtitle: "Il cornicello Napoletano",
+                    title: "Maradona",
+                    subtitle: "Maradona",
                     image: "Stamp",
                     category: "Popular Beliefs",
                     attraction: attractions[0],
@@ -47,20 +47,20 @@ struct iClownsApp: App {
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
                 ),
                 Collectible(
-                    title: "San Gregorio Armeno",
-                    subtitle: "Il cornicello Napoletano",
+                    title: "‘O Presep’",
+                    subtitle: "The Creche",
                     image: "Stamp",
                     category: "Traditions",
                     attraction: attractions[2],
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
                 ),
                 Collectible(
-                    title: "Duomo San Gennaro",
-                    subtitle: "Il cornicello Napoletano",
+                    title: "San Gennà",
+                    subtitle: "Saint John",
                     image: "Stamp",
                     category: "Popular Beliefs",
                     attraction: attractions[3],
-                    curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
+                    curiosity: "Three times a year, on solemn dates, San Gennaro renews his bond with Naples, and his blood is displayed in front of thousands of citizens and faithful who hope that it will liquefy. The cult of San Gennaro has always been deeply rooted in Neapolitan culture. The Neapolitans have a relationship peer to peer with San Gennaro, expressing it through constant, familiar dialogue. San Gennaro, pensaci tu! is an invocation repeated in the face of personal worries and collective fears ."
                 ),
                 Collectible(
                     title: "Via dei Tribunali",
