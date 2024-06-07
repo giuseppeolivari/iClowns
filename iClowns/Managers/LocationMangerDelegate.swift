@@ -18,8 +18,6 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
     
     let geofenceRadius = 50.0
     let manager: CLLocationManager
-   
-   
     
     override init() {
         self.manager = CLLocationManager()
@@ -29,32 +27,25 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
         self.manager.requestAlwaysAuthorization() // Richiedi autorizzazione  e scegli Always
         setupGeofences(geofenceRadius: geofenceRadius)
         requestNotificationPermission()
-//        if CLLocationManager.locationServicesEnabled() {
-//                   
-//                   manager.desiredAccuracy = kCLLocationAccuracyBest
-//                   manager.startUpdatingLocation()
-//               }
-        
     }
-    @Published var currentLocation: CLLocationCoordinate2D?
-
     
-
-        public func stopUpdatingLocation() {
-            manager.stopUpdatingLocation()
-        }
-
-        public func getCurrentLocation() -> CLLocationCoordinate2D? {
-            return currentLocation
-        }
-
-        public func getLat() -> Double{
-            return currentLocation?.latitude ?? 0.0
-        }
-
-        public func getLon() -> Double{
-            return currentLocation?.longitude ?? 0.0
-        }
+    @Published var currentLocation: CLLocationCoordinate2D?
+    
+    public func stopUpdatingLocation() {
+        manager.stopUpdatingLocation()
+    }
+    
+    public func getCurrentLocation() -> CLLocationCoordinate2D? {
+        return currentLocation
+    }
+    
+    public func getLat() -> Double{
+        return currentLocation?.latitude ?? 0.0
+    }
+    
+    public func getLon() -> Double{
+        return currentLocation?.longitude ?? 0.0
+    }
     
     private func setupGeofences(geofenceRadius : CLLocationDistance) {
         let modelContext = ModelContext(container)
@@ -85,22 +76,7 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
             }
         }
     }
-//    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-//           switch manager.authorizationStatus {
-//           case .authorizedWhenInUse, .authorizedAlways:
-//               if CLLocationManager.locationServicesEnabled() {
-//                   manager.desiredAccuracy = kCLLocationAccuracyBest
-//                   manager.startUpdatingLocation()
-//               }
-//           case .denied, .restricted:
-//               print("Accesso alla localizzazione negato o ristretto")
-//           case .notDetermined:
-//               print("Accesso alla localizzazione non ancora determinato")
-//           @unknown default:
-//               print("Stato di autorizzazione sconosciuto")
-//           }
-//       }
-   
+    
     private func sendNotification(for region: CLRegion) {
         print("notifica")
         let content = UNMutableNotificationContent()
@@ -131,12 +107,13 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
             print("Entered region but not a circular region: \(region.identifier)")
         }
     }
+    
     func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-            guard let location = locations.first else { return }
-            currentLocation = location.coordinate
-            print("[Update location at - \(Date())] with - lat: \(currentLocation!.latitude), lng: \(currentLocation!.longitude)")
-           
-        }
+        guard let location = locations.first else { return }
+        currentLocation = location.coordinate
+        print("[Update location at - \(Date())] with - lat: \(currentLocation!.latitude), lng: \(currentLocation!.longitude)")
+        
+    }
     
     func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
         if let region = region {
@@ -149,28 +126,22 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
         print("Location manager failed with error: \(error.localizedDescription)")
     }
     
+    func isWithinRange(x1: Double, y1: Double, x2: Double, y2: Double, radius: Double) -> Bool {
+        let distance = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2))
+        return distance <= radius
+    }
+    
+    func isOnPosition(collectible: Collectible) -> Bool {
+        Task {
+            if CLLocationManager.locationServicesEnabled() {
+                self.manager.desiredAccuracy = kCLLocationAccuracyBest
+                self.manager.startUpdatingLocation()
+            }
+            
+            let attr = collectible.relatedAttraction
+            return isWithinRange(x1: self.currentLocation?.longitude ?? 0.0, y1: attr.latitude, x2: self.currentLocation?.latitude ?? 0.0, y2: attr.latitude, radius: attr.radius)
+        }
+        return false
+    }
+    
 }
-//extension CLLocationCoordinate2D: Equatable {
-//    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
-//          
-//        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
-//       }}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
