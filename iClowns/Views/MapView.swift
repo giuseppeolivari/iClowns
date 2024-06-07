@@ -45,7 +45,7 @@ struct MapView: View {
                 }
                 
                 NavigationLink(
-                    destination: LocationDetailView(selectedTag: $selectedTag),
+                    destination: LocationDetailView(selectedTag: $selectedTag, manager: manager),
                     tag: selectedTag ?? -1,  // Use a default tag to avoid nil issues
                     selection: $selectedTag,
                     label: { EmptyView() }

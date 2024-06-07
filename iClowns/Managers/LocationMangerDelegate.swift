@@ -18,16 +18,43 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
     
     let geofenceRadius = 50.0
     let manager: CLLocationManager
+   
+   
     
     override init() {
         self.manager = CLLocationManager()
         super.init()
+        
         self.manager.delegate = self
         self.manager.requestAlwaysAuthorization() // Richiedi autorizzazione  e scegli Always
         setupGeofences(geofenceRadius: geofenceRadius)
         requestNotificationPermission()
+//        if CLLocationManager.locationServicesEnabled() {
+//                   
+//                   manager.desiredAccuracy = kCLLocationAccuracyBest
+//                   manager.startUpdatingLocation()
+//               }
         
     }
+    @Published var currentLocation: CLLocationCoordinate2D?
+
+    
+
+        public func stopUpdatingLocation() {
+            manager.stopUpdatingLocation()
+        }
+
+        public func getCurrentLocation() -> CLLocationCoordinate2D? {
+            return currentLocation
+        }
+
+        public func getLat() -> Double{
+            return currentLocation?.latitude ?? 0.0
+        }
+
+        public func getLon() -> Double{
+            return currentLocation?.longitude ?? 0.0
+        }
     
     private func setupGeofences(geofenceRadius : CLLocationDistance) {
         let modelContext = ModelContext(container)
@@ -44,6 +71,7 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
             )
             region.notifyOnEntry = true
             manager.startMonitoring(for: region)
+            
             print("Started monitoring region: \(region.identifier)")
         }
     }
@@ -57,7 +85,22 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
             }
         }
     }
-    
+//    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+//           switch manager.authorizationStatus {
+//           case .authorizedWhenInUse, .authorizedAlways:
+//               if CLLocationManager.locationServicesEnabled() {
+//                   manager.desiredAccuracy = kCLLocationAccuracyBest
+//                   manager.startUpdatingLocation()
+//               }
+//           case .denied, .restricted:
+//               print("Accesso alla localizzazione negato o ristretto")
+//           case .notDetermined:
+//               print("Accesso alla localizzazione non ancora determinato")
+//           @unknown default:
+//               print("Stato di autorizzazione sconosciuto")
+//           }
+//       }
+   
     private func sendNotification(for region: CLRegion) {
         print("notifica")
         let content = UNMutableNotificationContent()
@@ -79,12 +122,21 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if region is CLCircularRegion {
             print("Did enter region: \(region.identifier)")
+            
             //forse qui aggiungo variabile per ragazzi!!!!!
             sendNotification(for: region)
+            
         } else {
+            
             print("Entered region but not a circular region: \(region.identifier)")
         }
     }
+    func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+            guard let location = locations.first else { return }
+            currentLocation = location.coordinate
+            print("[Update location at - \(Date())] with - lat: \(currentLocation!.latitude), lng: \(currentLocation!.longitude)")
+           
+        }
     
     func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
         if let region = region {
@@ -96,7 +148,14 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location manager failed with error: \(error.localizedDescription)")
     }
+    
 }
+//extension CLLocationCoordinate2D: Equatable {
+//    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+//          
+//        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+//       }}
+
 
 
 
