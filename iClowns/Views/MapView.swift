@@ -34,6 +34,7 @@ struct MapView: View {
                     UserAnnotation()
                     ForEach(attractions) { attraction in
                         Marker("Attraction", systemImage: "circle", coordinate: attraction.coordinate).tag(attraction.id.hashValue)
+                            .tint(Color(red: 0.902, green: 0.755, blue: 0.393))
                     }
                 }
                 .mapStyle(.standard(pointsOfInterest: .excludingAll))
