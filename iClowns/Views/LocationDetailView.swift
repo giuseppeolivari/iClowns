@@ -168,19 +168,20 @@ struct LocationDetailView: View {
                     //                        .onChange(of: manager.currentLocation){newValue in
                     //                            if(newValue?.latitude == attraction?.latitude && newValue?.longitude == attraction?.longitude){
                     //
-                    Button(action: {
+                    if (manager.isOnPosition(collectible: collectible)){  Button(action: {
                         
                         print("Floating Button Click")
                     }, label: {
-                        if (isOnPosition(manager: manager, attr: collectible)){
-                            NavigationLink(destination: CameraView()) {
-                                Image("Scan Button")
-                                    .frame(width: proxy.size.width , height: proxy.size.height)
-                            }
+                        
+                        NavigationLink(destination: CameraView()) {
+                            Image("Scan Button")
+                                .frame(width: proxy.size.width , height: proxy.size.height)
                         }
-                    })
+                    }
+                    )
                     .position( x: proxy.size.width / 2 ,
                                y: proxy.size.height / 1.04)
+                    }
                     //                }
                     //                        }
                     
@@ -191,19 +192,7 @@ struct LocationDetailView: View {
         }
     }
 }
-func isOnPosition(manager: LocationManagerDelegate,attr: Collectible) -> Bool{
-    
-    if CLLocationManager.locationServicesEnabled() {
-        
-        manager.manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.manager.startUpdatingLocation()
-    }
-    if manager.currentLocation?.latitude == attr.relatedAttraction.latitude && manager.currentLocation?.longitude == attr.relatedAttraction.longitude {
-        return true
-    }
-    
-    return false
-}
+
 extension Color {
     init(hex: String) {
         var cleanHexCode = hex.trimmingCharacters(in:.whitespacesAndNewlines)

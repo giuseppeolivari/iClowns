@@ -25,8 +25,15 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
         self.manager = CLLocationManager()
         super.init()
         
+    
+      
+            
+        
+            
         self.manager.delegate = self
         self.manager.requestAlwaysAuthorization() // Richiedi autorizzazione  e scegli Always
+        self.manager.desiredAccuracy = kCLLocationAccuracyBest
+        self.manager.startUpdatingLocation()
         setupGeofences(geofenceRadius: geofenceRadius)
         requestNotificationPermission()
 //        if CLLocationManager.locationServicesEnabled() {
@@ -118,6 +125,40 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
             }
         }
     }
+//    func isWithinRange(x1: Double, y1: Double, x2: Double, y2: Double, radius: Double) -> Bool {
+//            let distance = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2))
+//            return distance <= radius
+//        }
+        
+    func haversineDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double) -> Double {
+          let radius: Double = 6371000.0 // Earth's radius in kilometers
+
+          // Convert degrees to radians
+          let lat1Rad = lat1 * .pi / 180
+          let lon1Rad = lon1 * .pi / 180
+          let lat2Rad = lat2 * .pi / 180
+          let lon2Rad = lon2 * .pi / 180
+
+          // Calculate differences
+          let dLat = lat2Rad - lat1Rad
+          let dLon = lon2Rad - lon1Rad
+
+          // Apply Haversine formula
+          let a = sin(dLat / 2) * sin(dLat / 2) +
+                  cos(lat1Rad) * cos(lat2Rad) *
+                  sin(dLon / 2) * sin(dLon / 2)
+          let c = 2 * atan2(sqrt(a), sqrt(1 - a))
+          let distance = radius * c
+
+          return distance
+      }
+
+    func isOnPosition(collectible: Collectible) -> Bool {
+         let attr = collectible.relatedAttraction
+         
+         return haversineDistance(lat1: self.currentLocation?.latitude ?? 0.0, lon1: self.currentLocation?.longitude ?? 0.0, lat2: attr.latitude, lon2: attr.longitude) <= attr.radius
+     }
+
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if region is CLCircularRegion {
