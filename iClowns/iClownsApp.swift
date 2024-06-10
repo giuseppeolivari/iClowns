@@ -19,8 +19,8 @@ struct iClownsApp: App {
             let modelContext = ModelContext(modelContainer)
             
             //TODO: TOGLI QUESTO
-            //try modelContext.delete(model: Collectible.self)
-            //try modelContext.delete(model: Attraction.self)
+            try modelContext.delete(model: Collectible.self)
+            try modelContext.delete(model: Attraction.self)
             
             let attractions = [
                 Attraction(name: "Via Emanuele de Deo, 46", latitude: 40.841447, longitude: 14.245233, radius: 20.0),
