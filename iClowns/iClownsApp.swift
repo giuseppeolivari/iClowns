@@ -33,7 +33,7 @@ struct iClownsApp: App {
                 Collectible(
                     title: "Maradona",
                     subtitle: "Maradona",
-                    image: "Stamp",
+                    image: "marado",
                     category: "Popular Beliefs",
                     attraction: attractions[0],
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
@@ -49,7 +49,7 @@ struct iClownsApp: App {
                 Collectible(
                     title: "‘O Presep’",
                     subtitle: "The Creche",
-                    image: "Stamp",
+                    image: "opresep",
                     category: "Traditions",
                     attraction: attractions[2],
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
@@ -57,7 +57,7 @@ struct iClownsApp: App {
                 Collectible(
                     title: "San Gennà",
                     subtitle: "Saint John",
-                    image: "Stamp",
+                    image: "sangennaro",
                     category: "Popular Beliefs",
                     attraction: attractions[3],
                     curiosity: "Three times a year, on solemn dates, San Gennaro renews his bond with Naples, and his blood is displayed in front of thousands of citizens and faithful who hope that it will liquefy. The cult of San Gennaro has always been deeply rooted in Neapolitan culture. The Neapolitans have a relationship peer to peer with San Gennaro, expressing it through constant, familiar dialogue. San Gennaro, pensaci tu! is an invocation repeated in the face of personal worries and collective fears ."
