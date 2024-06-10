@@ -24,7 +24,7 @@ struct iClownsApp: App {
             
             let attractions = [
                 Attraction(name: "Via Emanuele de Deo, 46", latitude: 40.841447, longitude: 14.245233, radius: 20.0),
-                Attraction(name: "Cimitero Fontanelle", latitude: 40.858873, longitude: 14.238852, radius: 20.0),
+                Attraction(name: "Via Eldorado, 3, 80132 Napoli NA", latitude: 40.82890, longitude: 14.247666, radius: 20.0), //castel dell'ovo
                 Attraction(name: "Via S. Gregorio Armeno, 14-52",latitude: 40.850077, longitude: 14.257811, radius: 100.0),
                 Attraction(name: "Via Duomo, 147 ",latitude: 40.852447,  longitude: 14.258966, radius: 15.0),
                 Attraction(name: "Via dei Tribunali",latitude: 40.851484,  longitude: 14.258777, radius: 400.0)
@@ -39,12 +39,12 @@ struct iClownsApp: App {
                     curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
                 ),
                 Collectible(
-                    title: "Cimitero Delle Fontanelle",
-                    subtitle: "Il cornicello Napoletano",
-                    image: "Stamp",
+                    title: "‘O Castel dell’Ovo",
+                    subtitle: "Castel dell’Ovo ",
+                    image: "castelovo",
                     category: "Entertainment",
                     attraction: attractions[1],
-                    curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
+                    curiosity: "Castel dell’Ovo, a fortress of Norman origin is one of Naples' oldest castles. According to legend, the name derives from the egg of the mermaid Parthenope, which the poet Virgil hid in the underground chambers, enclosed and protected by a cage because it was sacred and enchanted. The egg was believed to bring good luck to the city as long as it remained intact. Even today, it is still believed that the castle has not collapsed thanks to the presence of the egg."
                 ),
                 Collectible(
                     title: "‘O Presep’",
