@@ -52,7 +52,7 @@ struct MapView: View {
                     label: { EmptyView() }
                 )
                 //deve andare nella view dei collectible
-                NavigationLink(destination: EmptyView()) {
+                NavigationLink(destination: CollectibleView()) {
             
                         Image("bottone")
                             .resizable()

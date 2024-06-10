@@ -9,19 +9,21 @@ import SwiftUI
 import SwiftData
 
 struct CollectibleView: View {
-    @Query(filter: #Predicate<Collectible> { collectible in
-        collectible.category == "Popular Beliefs"
-    }) var popularBeliefs: [Collectible]
-    
-    @Query(filter: #Predicate<Collectible> { collectible in
-        collectible.category == "Entertainment"
-    }) var entertainment: [Collectible]
-    
-    @Query(filter: #Predicate<Collectible> { collectible in
-        collectible.category == "Traditions"
-    }) var traditionsㅤㅤㅤ: [Collectible]
-    
+    @Query var collectibles : [Collectible]
+
+  
     var body: some View {
+        
+        var popularBeliefs = collectibles.filter{ collectible in
+            collectible.category == "Popular Beliefs"
+        }
+        var entertainment = collectibles.filter{ collectible in
+            collectible.category == "Entertainment"
+        }
+        var traditionsㅤㅤㅤ = collectibles.filter{ collectible in
+            collectible.category == "Traditions"
+        }
+        
         NavigationStack{
             ZStack {
                 Color(hex: "1C1C1E")
