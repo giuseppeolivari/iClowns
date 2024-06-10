@@ -14,13 +14,13 @@ struct CollectibleView: View {
   
     var body: some View {
         
-        var popularBeliefs = collectibles.filter{ collectible in
+        let popularBeliefs = collectibles.filter{ collectible in
             collectible.category == "Popular Beliefs"
         }
-        var entertainment = collectibles.filter{ collectible in
+        let entertainment = collectibles.filter{ collectible in
             collectible.category == "Entertainment"
         }
-        var traditionsㅤㅤㅤ = collectibles.filter{ collectible in
+        let traditionsㅤㅤㅤ = collectibles.filter{ collectible in
             collectible.category == "Traditions"
         }
         
