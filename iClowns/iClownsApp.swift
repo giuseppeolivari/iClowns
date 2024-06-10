@@ -33,7 +33,7 @@ struct iClownsApp: App {
                 Collectible(
                     title: "Maradona",
                     subtitle: "Maradona",
-                    image: "marado",
+                    image: "maradò",
                     category: "Entertainment",
                     attraction: attractions[0],
                     curiosity: "Maradona is  much more than a football player to this city, he is remembered as a hero, a  legend. A man with humble origins who  has lead the team to victory multiple times  while giving new hope, pride and identity to a sport team once associated only to crime and degradation. For these reasons he has always been loved, also after is neapolitan period, and we’ll always be."
