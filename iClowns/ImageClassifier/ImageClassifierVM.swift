@@ -83,7 +83,6 @@ extension UIImage {
         guard let cvPixelBuffer = resizeImage?.convertToBuffer() else { return  }
         
         do {
-           
             // Load the SqueezeNet Core ML model
             let model = try ImageClassificationNapoli(configuration: MLModelConfiguration())
             
@@ -92,8 +91,6 @@ extension UIImage {
             
             // Append the classification result to the array
             self.appendConfidenceClassification(confidence: prediction.targetProbability)
-            
-            
         } catch let error {
             print(error.localizedDescription)
         }
@@ -106,12 +103,10 @@ extension UIImage {
         
         let dictionaryString = confiltr.map { "\($0.key)" }.joined(separator: ", ")
         
-        
         Just(dictionaryString)
             .receive(on: DispatchQueue.main)
             .sink { value in
                 self.confidenceClassificationText.append(value)
-                
             }
             .store(in: &cancellable)
     }

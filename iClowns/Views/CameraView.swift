@@ -9,21 +9,51 @@ import SwiftUI
 
 struct CameraView: View {
     @State var icvm = ImageClassificationViewModel()
+    @Binding var isUnlocking: Bool
+    
+    var attraction: Attraction
     
     var body: some View {
-        ZStack {
-            CameraPreviewHolder(captureSession: CaptureManager.shared.session)
-                .ignoresSafeArea()
-            let pred = FrameManager.shared.icvm.confidenceClassificationText.last ?? "null"
-            if !pred.isEmpty{
-                PredictionView()
+        NavigationStack {
+            ZStack {
+                CameraPreviewHolder(captureSession: CaptureManager.shared.session)
+                    .ignoresSafeArea()
+                
+                let pred = FrameManager.shared.icvm.confidenceClassificationText.last ?? "null"
+                
+                if !pred.isEmpty {
+                    if pred == "Busto di San Gennaro" && attraction.name == "Via Duomo, 147" {
+                        PredictionView()
+                            .onTapGesture {
+                                isUnlocking = true
+                            }
+                    }
+                    if pred == "Castel dell'Ovo" && attraction.name == "Via Eldorado, 3" {
+                        PredictionView()
+                            .onTapGesture {
+                                isUnlocking = true
+                            }
+                    }
+                    if pred == "Murales Maradona" && attraction.name == "Via Emanuele de Deo, 46" {
+                        PredictionView()
+                            .onTapGesture {
+                                isUnlocking = true
+                            }
+                    }
+                    if pred == "Presepe" && attraction.name == "Via S. Gregorio Armeno, 14-52" {
+                        PredictionView()
+                            .onTapGesture {
+                                isUnlocking = true
+                            }
+                    }
+                }
             }
-        }
-        .onAppear {
-            CaptureManager.shared.controllSession(start: true)
-        }
-        .onDisappear {
-            CaptureManager.shared.controllSession(start: false)
+            .onAppear {
+                CaptureManager.shared.controllSession(start: true)
+            }
+            .onDisappear {
+                CaptureManager.shared.controllSession(start: false)
+            }
         }
     }
 }

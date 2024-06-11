@@ -26,7 +26,7 @@ struct iClownsApp: App {
                 Attraction(name: "Via Emanuele de Deo, 46", latitude: 40.841447, longitude: 14.245233, radius: 15.0), //maradona
                 Attraction(name: "Via Eldorado, 3", latitude: 40.82890, longitude: 14.247666, radius: 25.0), //castel dell'ovo
                 Attraction(name: "Via S. Gregorio Armeno, 14-52",latitude: 40.850077, longitude: 14.257811, radius: 100.0), //presepe
-                Attraction(name: "Via Duomo, 147 ",latitude: 40.852447,  longitude: 14.258966, radius: 15.0), //san gennaro
+                Attraction(name: "Via Duomo, 147",latitude: 40.852447,  longitude: 14.258966, radius: 15.0), //san gennaro
                 Attraction(name: "Vico Santa Luciella, 5/6",latitude: 40.505771,  longitude: 14.152596, radius: 20.0) //teschio
             ]
             let collectibles = [

@@ -10,10 +10,8 @@ import SwiftData
 
 struct CollectibleView: View {
     @Query var collectibles : [Collectible]
-
-  
+    
     var body: some View {
-        
         let popularBeliefs = collectibles.filter{ collectible in
             collectible.category == "Popular Beliefs"
         }
@@ -28,7 +26,6 @@ struct CollectibleView: View {
             ZStack {
                 Color(hex: "1C1C1E")
                     .ignoresSafeArea()
-                
                 VStack() {
                     /*   FIRST GROUP   */
                     ZStack {
@@ -53,7 +50,7 @@ struct CollectibleView: View {
                     ScrollView(.horizontal) {
                         HStack {
                             ForEach(popularBeliefs) { collectible in
-                                Image(collectible.unlocked ? collectible.image : "Stamp 2")
+                                Image(collectible.unlocked ? collectible.image : "retrofrankobolls")
                                     .resizable()
                                     .frame(width:85, height: 121)
                             }
@@ -83,7 +80,7 @@ struct CollectibleView: View {
                     ScrollView(.horizontal) {
                         HStack {
                             ForEach(entertainment) { collectible in
-                                Image(collectible.unlocked ? collectible.image : "Stamp 2")
+                                Image(collectible.unlocked ? collectible.image : "retrofrankobolls")
                                     .resizable()
                             }.frame(width:85, height: 121)
                         }
@@ -113,7 +110,7 @@ struct CollectibleView: View {
                     ScrollView(.horizontal) {
                         HStack {
                             ForEach(traditionsㅤㅤㅤ) { collectible in
-                                Image(collectible.unlocked ? collectible.image : "Stamp 2")
+                                Image(collectible.unlocked ? collectible.image : "retrofrankobolls")
                                     .resizable()
                                     .foregroundStyle(.white)
                             }.frame(width:85, height: 121)
@@ -142,81 +139,4 @@ struct CollectibleView: View {
         
         return count
     }
-}
-
-#Preview {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: Collectible.self, Attraction.self, configurations: config)
-    
-    let attraction = Attraction(name: "murales maradona", latitude: 40.841447, longitude: 14.245233, radius: 20.0)
-    
-    let collectibleA = Collectible(
-        title: "O’ Curniciell",
-        subtitle: "Il cornicello Napoletano",
-        image: "Stamp",
-        category: "Popular Beliefs",
-        attraction: attraction,
-        curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
-    )
-    let collectibleAAAAAA = Collectible(
-        title: "O’ Curniciell",
-        subtitle: "Il cornicello Napoletano",
-        image: "Stamp",
-        category: "Popular Beliefs",
-        attraction: attraction,
-        curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
-    )
-    let collectibleAA = Collectible(
-        title: "O’ Curniciell",
-        subtitle: "Il cornicello Napoletano",
-        image: "Stamp",
-        category: "Popular Beliefs",
-        attraction: attraction,
-        curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
-    )
-    let collectibleAAA = Collectible(
-        title: "O’ Curniciell",
-        subtitle: "Il cornicello Napoletano",
-        image: "Stamp",
-        category: "Popular Beliefs",
-        attraction: attraction,
-        curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
-    )
-    
-    let collectibleAAAA = Collectible(
-        title: "O’ Curniciell",
-        subtitle: "Il cornicello Napoletano",
-        image: "Stamp",
-        category: "Popular Beliefs",
-        attraction: attraction,
-        curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
-    )
-    let collectibleB = Collectible(
-        title: "O’ Curniciell",
-        subtitle: "Il cornicello Napoletano",
-        image: "Stamp",
-        category: "Entertainment",
-        attraction: attraction,
-        curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
-    )
-    let collectibleC = Collectible(
-        title: "O’ Curniciell",
-        subtitle: "Il cornicello Napoletano",
-        image: "Stamp",
-        category: "Traditions",
-        attraction: attraction,
-        curiosity: "Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e te lo devono attivare pungendoti la manella con la punta del corno. Bello eh? Che belllo il cornicello lo sai è rosso bla bla bla bla porta fortuna, te lo devono regalare altrimenti super seccia e"
-    )
-    
-    container.mainContext.insert(attraction)
-    container.mainContext.insert(collectibleA)
-    container.mainContext.insert(collectibleAA)
-    container.mainContext.insert(collectibleAAA)
-    container.mainContext.insert(collectibleAAAA)
-    container.mainContext.insert(collectibleAAAAAA)
-    container.mainContext.insert(collectibleB)
-    container.mainContext.insert(collectibleC)
-    
-    return CollectibleView()
-        .modelContainer(container)
 }

@@ -16,19 +16,14 @@ struct CardFront : View {
     let height : CGFloat
     /// The degree of rotation for the card
     @Binding var degree : Double
-
+    var collectible: Collectible
+    
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(.white)
-                .frame(width: width, height: height)
-                .shadow(color: .gray, radius: 2, x: 0, y: 0)
-            
-          //  Image(systemName: "suit.club.fill")
-             
-            
-           
-
+//            RoundedRectangle(cornerRadius: 20)
+//                .frame(width: width, height: height)
+                //.shadow(color: .gray, radius: 2, x: 0, y: 0)
+            Image(collectible.image)
         }.rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
     }
 }
@@ -41,14 +36,12 @@ struct CardBack : View {
     let height : CGFloat
     /// The degree of rotation for the card
     @Binding var degree : Double
-
+    
     var body: some View {
         ZStack {
-               
             Image("retrofrankobolls")
-
         }.rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
-
+        
     }
 }
 
@@ -58,65 +51,61 @@ struct Card_Animation: View {
     @State var backDegree = 0.0
     /// The degree of rotation for the front of the card
     @State var frontDegree = -90.0
-/// A boolean that keeps track of whether the card is flipped or not
-@State var isFlipped = false
+    /// A boolean that keeps track of whether the card is flipped or not
+    @State var isFlipped = false
+    
+    var isUnlocking: Bool
+    
     /// The width of the card
-let width : CGFloat = 200
-/// The height of the card
-let height : CGFloat = 250
-/// The duration and delay of the flip animation
-let durationAndDelay : CGFloat = 0.3
-
-/// A function that flips the card by updating the degree of rotation for the front and back of the card
-func flipCard () {
-    isFlipped = !isFlipped
-    if isFlipped {
-        withAnimation(.linear(duration: durationAndDelay)) {
-            backDegree = 90
-        }
-        withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
-            frontDegree = 0
-        }
-    } else {
-        withAnimation(.linear(duration: durationAndDelay)) {
-            frontDegree = -90
-        }
-        withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
-            backDegree = 0
+    let width : CGFloat = 200
+    /// The height of the card
+    let height : CGFloat = 250
+    /// The duration and delay of the flip animation
+    let durationAndDelay : CGFloat = 0.3
+    
+    /// A function that flips the card by updating the degree of rotation for the front and back of the card
+    func flipCard () {
+        isFlipped = !isFlipped
+        if isFlipped {
+            withAnimation(.linear(duration: durationAndDelay)) {
+                backDegree = 90
+            }
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                frontDegree = 0
+            }
+        } else {
+            withAnimation(.linear(duration: durationAndDelay)) {
+                frontDegree = -90
+            }
+            withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
+                backDegree = 0
+            }
         }
     }
-}
-   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @State var unlocked = false //aggiunta per il toggle
+    var collectible: Collectible
     
-var body: some View {
-    
-    ZStack {
-        CardFront(width: width, height: height, degree: $frontDegree)
-        CardBack(width: width, height: height, degree: $backDegree)
-    }.onChange(of: unlocked) {
-        if !isFlipped { //uso isFlipped così gira una volta soltanto
+    var body: some View {
+        
+        ZStack {
+            CardFront(width: width, height: height, degree: $frontDegree, collectible: collectible)
+                .onAppear {
+                    if isUnlocking {
+                        unlocked.toggle()
+                    }
+                }
+            CardBack(width: width, height: height, degree: $backDegree)
+        }.onChange(of: unlocked) {
+            if !isFlipped { //uso isFlipped così gira una volta soltanto
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
                     flipCard()
                 })
             }
-        else {
-            print ("non deve ruotare perchè isFlipped sta a true")
-            
+            else {
+                print ("non deve ruotare perchè isFlipped sta a true")
+                
+            }
         }
     }
-  
-    
-    // questo bottone deve essere sostituito, quando il modello di ML riconosce quello che vogliamo fa il toggle di unlocked
-    Button("Button TEST FLIP") {
-        unlocked.toggle()
-        //print(unlocked)
-    }
 }
-}
-
-
-#Preview {
-    Card_Animation()
-}
-

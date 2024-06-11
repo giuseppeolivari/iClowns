@@ -18,50 +18,37 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
     
     let geofenceRadius = 50.0
     let manager: CLLocationManager
-   
-   
     
     override init() {
         self.manager = CLLocationManager()
         super.init()
         
-    
-      
-            
-        
-            
         self.manager.delegate = self
         self.manager.requestAlwaysAuthorization() // Richiedi autorizzazione  e scegli Always
         self.manager.desiredAccuracy = kCLLocationAccuracyBest
         self.manager.startUpdatingLocation()
         setupGeofences(geofenceRadius: geofenceRadius)
         requestNotificationPermission()
-//        if CLLocationManager.locationServicesEnabled() {
-//                   
-//                   manager.desiredAccuracy = kCLLocationAccuracyBest
-//                   manager.startUpdatingLocation()
-//               }
-        
     }
-    @Published var currentLocation: CLLocationCoordinate2D?
-
     
-
-        public func stopUpdatingLocation() {
-            manager.stopUpdatingLocation()
-        }
-
-        public func getCurrentLocation() -> CLLocationCoordinate2D? {
-            return currentLocation
-        }
-
-        public func getLat() -> Double{
-            return currentLocation?.latitude ?? 0.0
-        }
-
-        public func getLon() -> Double{
-            return currentLocation?.longitude ?? 0.0
-        }
+    @Published var currentLocation: CLLocationCoordinate2D?
+    
+    
+    public func stopUpdatingLocation() {
+        manager.stopUpdatingLocation()
+    }
+    
+    public func getCurrentLocation() -> CLLocationCoordinate2D? {
+        return currentLocation
+    }
+    
+    public func getLat() -> Double{
+        return currentLocation?.latitude ?? 0.0
+    }
+    
+    public func getLon() -> Double{
+        return currentLocation?.longitude ?? 0.0
+    }
     
     private func setupGeofences(geofenceRadius : CLLocationDistance) {
         let modelContext = ModelContext(container)
@@ -92,22 +79,7 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
             }
         }
     }
-//    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-//           switch manager.authorizationStatus {
-//           case .authorizedWhenInUse, .authorizedAlways:
-//               if CLLocationManager.locationServicesEnabled() {
-//                   manager.desiredAccuracy = kCLLocationAccuracyBest
-//                   manager.startUpdatingLocation()
-//               }
-//           case .denied, .restricted:
-//               print("Accesso alla localizzazione negato o ristretto")
-//           case .notDetermined:
-//               print("Accesso alla localizzazione non ancora determinato")
-//           @unknown default:
-//               print("Stato di autorizzazione sconosciuto")
-//           }
-//       }
-   
+    
     private func sendNotification(for region: CLRegion) {
         print("notifica")
         let content = UNMutableNotificationContent()
@@ -125,40 +97,36 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
             }
         }
     }
-//    func isWithinRange(x1: Double, y1: Double, x2: Double, y2: Double, radius: Double) -> Bool {
-//            let distance = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2))
-//            return distance <= radius
-//        }
-        
+    
     func haversineDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double) -> Double {
-          let radius: Double = 6371000.0 // Earth's radius in kilometers
-
-          // Convert degrees to radians
-          let lat1Rad = lat1 * .pi / 180
-          let lon1Rad = lon1 * .pi / 180
-          let lat2Rad = lat2 * .pi / 180
-          let lon2Rad = lon2 * .pi / 180
-
-          // Calculate differences
-          let dLat = lat2Rad - lat1Rad
-          let dLon = lon2Rad - lon1Rad
-
-          // Apply Haversine formula
-          let a = sin(dLat / 2) * sin(dLat / 2) +
-                  cos(lat1Rad) * cos(lat2Rad) *
-                  sin(dLon / 2) * sin(dLon / 2)
-          let c = 2 * atan2(sqrt(a), sqrt(1 - a))
-          let distance = radius * c
-
-          return distance
-      }
-
+        let radius: Double = 6371000.0 // Earth's radius in kilometers
+        
+        // Convert degrees to radians
+        let lat1Rad = lat1 * .pi / 180
+        let lon1Rad = lon1 * .pi / 180
+        let lat2Rad = lat2 * .pi / 180
+        let lon2Rad = lon2 * .pi / 180
+        
+        // Calculate differences
+        let dLat = lat2Rad - lat1Rad
+        let dLon = lon2Rad - lon1Rad
+        
+        // Apply Haversine formula
+        let a = sin(dLat / 2) * sin(dLat / 2) +
+        cos(lat1Rad) * cos(lat2Rad) *
+        sin(dLon / 2) * sin(dLon / 2)
+        let c = 2 * atan2(sqrt(a), sqrt(1 - a))
+        let distance = radius * c
+        
+        return distance
+    }
+    
     func isOnPosition(collectible: Collectible) -> Bool {
-         let attr = collectible.relatedAttraction
-         
-         return haversineDistance(lat1: self.currentLocation?.latitude ?? 0.0, lon1: self.currentLocation?.longitude ?? 0.0, lat2: attr.latitude, lon2: attr.longitude) <= attr.radius
-     }
-
+        let attr = collectible.relatedAttraction
+        
+        return haversineDistance(lat1: self.currentLocation?.latitude ?? 0.0, lon1: self.currentLocation?.longitude ?? 0.0, lat2: attr.latitude, lon2: attr.longitude) <= attr.radius
+    }
+    
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if region is CLCircularRegion {
@@ -173,11 +141,11 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
         }
     }
     func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-            guard let location = locations.first else { return }
-            currentLocation = location.coordinate
-            print("[Update location at - \(Date())] with - lat: \(currentLocation!.latitude), lng: \(currentLocation!.longitude)")
-           
-        }
+        guard let location = locations.first else { return }
+        currentLocation = location.coordinate
+        print("[Update location at - \(Date())] with - lat: \(currentLocation!.latitude), lng: \(currentLocation!.longitude)")
+        
+    }
     
     func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
         if let region = region {
@@ -191,27 +159,3 @@ class LocationManagerDelegate: NSObject, ObservableObject, CLLocationManagerDele
     }
     
 }
-//extension CLLocationCoordinate2D: Equatable {
-//    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
-//          
-//        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
-//       }}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
