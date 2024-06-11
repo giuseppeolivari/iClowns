@@ -44,9 +44,11 @@ struct LocationDetailView: View {
                     
                     /* MID OF THE VIEW */
                     HStack {
-                            Image(collectible.image)
-                                .resizable()
-                                .scaledToFill()
+                        
+                        Card_Animation()
+//                            Image(collectible.image)
+//                                .resizable()
+//                                .scaledToFill()
                         /* RIGHT SIDE */
                         VStack(alignment: .leading) {
                             ZStack {
