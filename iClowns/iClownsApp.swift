@@ -106,7 +106,7 @@ struct iClownsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MapView()
+            WelcomeView()
         }.modelContainer(modelContainer)
     }
 }
