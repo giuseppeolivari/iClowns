@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    
+    @Environment(\.dismiss) var dismiss
     @AppStorage("isOnboarding") var isOnboarding: Bool?
     
     var body: some View {
@@ -18,20 +18,21 @@ struct WelcomeView: View {
                 Text("Welcome to WonderSeek!")
                     .font(.largeTitle)
                     .bold()
-            } .padding(.bottom, 80)
+            } .padding(.bottom, 50)
             
             
             VStack (alignment: .leading) {
                 HStack {
                     Image(systemName: "mappin.and.ellipse")
                         .font(.system(size: 40))
-                        
+                        .foregroundColor(Color(red: 0.406, green: 0.256, blue: 0.596))
                     
                     VStack (alignment: .leading) {
                         Text("Find the points of interest all around you ")
                             .font(.title2)
-                            .fontWeight(.bold)
-                            .frame(width: 225)
+                            .fontWeight(.medium)
+                            .padding(.leading, 10.0)
+                            .frame(width: 215)
                         
                     }
                 } .padding(.bottom, 15)
@@ -40,13 +41,13 @@ struct WelcomeView: View {
                 HStack {
                     Image(systemName: "viewfinder")
                         .font(.system(size: 40))
-                       
+                        .foregroundColor(Color(red: 0.406, green: 0.256, blue: 0.596))
                         
                         
                     VStack (alignment: .leading){
                         Text("Scan the items to unlock the amazing custom stamps")
                             .font(.title2)
-                            .fontWeight(.bold)
+                            .fontWeight(.medium)
                             .frame(width: 225)
                         
                     }
@@ -54,16 +55,18 @@ struct WelcomeView: View {
                 
                 HStack {
                     Image(systemName: "exclamationmark.bubble")
-                        .font(.system(size: 40))
+                        .font(.system(size: 33))
+                        .foregroundColor(Color(red: 0.406, green: 0.256, blue: 0.596))
+                        
                     VStack (alignment: .leading) {
                         Text("Get notified when you’re close to the points of interest.")
                             .font(.title2)
-                            .fontWeight(.bold)
+                            .fontWeight(.medium)
                             .frame(width: 225)
                         
 //
                     }
-                } .padding(.bottom, 15)
+                } .padding(.bottom, 40)
                 
                 
              
@@ -81,6 +84,8 @@ struct WelcomeView: View {
                 
                 Button(action: {
                     isOnboarding = false
+                    dismiss()
+                        
                 }) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 25)
