@@ -48,9 +48,14 @@ struct LocationDetailView: View {
                         Card_Animation(isUnlocking: isUnlocking, collectible: collectible)
                             .onChange(of: isUnlocking, perform: { _ in
                                 Task {
-                                    try? modelContext.save()
+                                    if let index = collectibles.firstIndex(where: { $0.id == collectible.id }) {
+                                        collectibles[index].unlocked = true
+                                        try? modelContext.save()
+                                    }
+                                    collectible.unlocked = true
+                                    
                                 }
-                                collectible.unlocked = true
+                                
                                 
                             })
                     } else {

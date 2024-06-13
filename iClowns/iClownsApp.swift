@@ -20,15 +20,15 @@ struct iClownsApp: App {
             let modelContext = ModelContext(modelContainer)
             
             //TODO: TOGLI QUESTO
-            try modelContext.delete(model: Collectible.self)
-            try modelContext.delete(model: Attraction.self)
+            //            try modelContext.delete(model: Collectible.self)
+            //            try modelContext.delete(model: Attraction.self)
             
             let attractions = [
                 Attraction(name: "Via Emanuele de Deo, 46", latitude: 40.841447, longitude: 14.245233, radius: 15.0), //maradona
                 Attraction(name: "Via Eldorado, 3", latitude: 40.82890, longitude: 14.247666, radius: 25.0), //castel dell'ovo
                 Attraction(name: "Via S. Gregorio Armeno, 14-52",latitude: 40.850077, longitude: 14.257811, radius: 100.0), //presepe
                 Attraction(name: "Via Duomo, 147",latitude: 40.852447,  longitude: 14.258966, radius: 15.0), //san gennaro
-                Attraction(name: "Vico Santa Luciella, 5/6",latitude: 40.505771,  longitude: 14.152596, radius: 20.0) //teschio
+                Attraction(name: "Vico Santa Luciella, 5/6",latitude: 40.84853,  longitude: 14.25706, radius: 20.0) //teschio
             ]
             let collectibles = [
                 Collectible(
@@ -43,7 +43,7 @@ struct iClownsApp: App {
                     title: "‘O Castel dell’Ovo",
                     subtitle: "Castel dell’Ovo ",
                     image: "castelovo",
-                    category: "Popular beliefs",
+                    category: "Popular Beliefs",
                     attraction: attractions[1],
                     curiosity: "Castel dell’Ovo, a fortress of Norman origin is one of Naples' oldest castles. According to legend, the name derives from the egg of the mermaid Parthenope, which the poet Virgil hid in the underground chambers, enclosed and protected by a cage because it was sacred and enchanted. The egg was believed to bring good luck to the city as long as it remained intact. Even today, it is still believed that the castle has not collapsed thanks to the presence of the egg."
                 ),
@@ -82,9 +82,10 @@ struct iClownsApp: App {
             // Checking number of collectibles
             let collectiblesDescriptor = FetchDescriptor<Collectible>()
             var collectiblesCount = 0
-            try modelContext.enumerate(collectiblesDescriptor, block: { collectible in
+            try modelContext.enumerate(collectiblesDescriptor) { _ in
                 collectiblesCount += 1
-            })
+            }
+            
 #if DEBUG
             print("Attractions in the database: ", attractionsCount)
             print("Collectibles in the database: ", collectiblesCount)
@@ -93,12 +94,14 @@ struct iClownsApp: App {
                 for i in 0..<attractions.count {
                     modelContext.insert(attractions[i])
                 }
+                try? modelContext.save()
             }
             
             if collectiblesCount != collectibles.count {
                 for i in 0..<collectibles.count {
                     modelContext.insert(collectibles[i])
                 }
+                try? modelContext.save()
             }
         } catch {
             fatalError("Could not initialize ModelContainer")
