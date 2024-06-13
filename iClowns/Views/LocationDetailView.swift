@@ -47,8 +47,11 @@ struct LocationDetailView: View {
                     if !collectible.unlocked {
                         Card_Animation(isUnlocking: isUnlocking, collectible: collectible)
                             .onChange(of: isUnlocking, perform: { _ in
+                                Task {
+                                    try? modelContext.save()
+                                }
                                 collectible.unlocked = true
-                                //try modelContext.save()
+                                
                             })
                     } else {
                         Card_Animation(isUnlocking: collectible.unlocked, collectible: collectible)
@@ -101,12 +104,14 @@ struct LocationDetailView: View {
                                     Circle()
                                         .frame(width: 30, height: 30)
                                         .foregroundColor(Color(hex: "EEDDF0"))
-                                    Image(systemName: "paperplane.fill")
+                                    Image(systemName: "mappin.and.ellipse")
                                         .foregroundColor(Color(hex: "684298"))
                                 }
                             })
                             
                             Text("\(collectible.relatedAttraction.name)")
+                                .underline()
+                                .lineLimit(1)
                         }
                         
                     }
