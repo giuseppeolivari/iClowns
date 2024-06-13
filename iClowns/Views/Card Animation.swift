@@ -98,7 +98,7 @@ struct Card_Animation: View {
             CardBack(width: width, height: height, degree: $backDegree)
         }.onChange(of: unlocked) {
             if !isFlipped { //uso isFlipped così gira una volta soltanto
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     flipCard()
                 })
             }

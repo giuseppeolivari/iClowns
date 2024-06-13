@@ -44,11 +44,15 @@ struct LocationDetailView: View {
                 
                 /* MID OF THE VIEW */
                 HStack {
-                    Card_Animation(isUnlocking: isUnlocking, collectible: collectible)
-                        .onChange(of: isUnlocking, perform: { _ in
-                            collectible.unlocked = true
-                            //try modelContext.save()
-                        })
+                    if !collectible.unlocked {
+                        Card_Animation(isUnlocking: isUnlocking, collectible: collectible)
+                            .onChange(of: isUnlocking, perform: { _ in
+                                collectible.unlocked = true
+                                //try modelContext.save()
+                            })
+                    } else {
+                        Card_Animation(isUnlocking: collectible.unlocked, collectible: collectible)
+                    }
                     /* RIGHT SIDE */
                     VStack(alignment: .leading) {
                         ZStack {
@@ -130,27 +134,18 @@ struct LocationDetailView: View {
                 
                 /* BOTTOM SIDE */
                 VStack{
-                    ScrollView {
-                        Text(collectible.curiosity)
-                            .padding()
-                    }.defaultScrollAnchor(.top)
                     
-                    Spacer()
                     
                     /* SCAN SIDE */
-                    ZStack {
-                        Button(action: {
-                            print("Floating Button Click")
-                        }, label: {
-                            NavigationLink(destination: CameraView(isUnlocking: $isUnlocking, attraction: collectible.relatedAttraction)) {
-                                Image("Scan Button")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: UIScreen.main.bounds.width * 0.15 , height: UIScreen.main.bounds.height * 0.15)
-                                    .padding(.top)
-                            }
-                        })
-                        if (manager.isOnPosition(collectible: collectible)){
+                    if !collectible.unlocked {
+                        Spacer()
+                        Text("SCAN TO FIND OUT!")
+                            .font(.title)
+                            .fontWeight(.black)
+                            .padding()
+                        
+                        Spacer()
+                        ZStack {
                             Button(action: {
                                 print("Floating Button Click")
                             }, label: {
@@ -162,9 +157,29 @@ struct LocationDetailView: View {
                                         .padding(.top)
                                 }
                             })
-                        }
+                            if (manager.isOnPosition(collectible: collectible)){
+                                Button(action: {
+                                    print("Floating Button Click")
+                                }, label: {
+                                    NavigationLink(destination: CameraView(isUnlocking: $isUnlocking, attraction: collectible.relatedAttraction)) {
+                                        Image("Scan Button")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: UIScreen.main.bounds.width * 0.15 , height: UIScreen.main.bounds.height * 0.15)
+                                            .padding(.top)
+                                    }
+                                })
+                            }
+                            
+                        }.ignoresSafeArea()
+                    } else {
+                        ScrollView {
+                            Text(collectible.curiosity)
+                                .padding()
+                        }.defaultScrollAnchor(.top)
                         
-                    }.ignoresSafeArea()
+                        Spacer()
+                    }
                 }.navigationTitle(collectible.title)
             }
             .background(Color(hex: "1C1C1E"))

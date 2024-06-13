@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct iClownsApp: App {
+    @AppStorage("isOnboarding") var isOnboarding: Bool = true
     let modelContainer: ModelContainer
     
     init() {
@@ -106,7 +107,11 @@ struct iClownsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+            if isOnboarding {
+                WelcomeView()
+            } else {
+                MapView()
+            }
         }.modelContainer(modelContainer)
     }
 }

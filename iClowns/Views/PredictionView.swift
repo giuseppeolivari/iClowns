@@ -20,7 +20,9 @@ struct PredictionView: View {
                         .position(x: geometry.size.width/2,y:geometry.size.height/1.4)
                         .foregroundColor(Color(hue: 1.0, saturation: 0.013, brightness: 0.246))
                     
-                    Image("StampsMini")
+                    Image("retrofrankobolls")
+                        .resizable()
+                        .frame(width: geometry.size.width * 0.15 ,height: geometry.size.height * 0.1)
                         .position(x: geometry.size.width/4.8,y:geometry.size.height/1.4)
                     
                     VStack(alignment: .leading) {
@@ -28,9 +30,10 @@ struct PredictionView: View {
                             .foregroundStyle(.white)
                         
                         Text("TAP TO UNLOCK THE STAMP!")
+                            .font(.system(size: 15))
                             .foregroundColor(.white)
                     }
-                    .position(x: geometry.size.width/2.1,y:geometry.size.height/1.4)
+                    .position(x: geometry.size.width * 0.6 ,y:geometry.size.height/1.4)
                 }
             }
         }

@@ -10,6 +10,7 @@ import SwiftUI
 struct CameraView: View {
     @State var icvm = ImageClassificationViewModel()
     @Binding var isUnlocking: Bool
+    @Environment(\.dismiss) var dismiss
     
     var attraction: Attraction
     
@@ -26,24 +27,28 @@ struct CameraView: View {
                         PredictionView()
                             .onTapGesture {
                                 isUnlocking = true
+                                dismiss()
                             }
                     }
                     if pred == "Castel dell'Ovo" && attraction.name == "Via Eldorado, 3" {
                         PredictionView()
                             .onTapGesture {
                                 isUnlocking = true
+                                dismiss()
                             }
                     }
                     if pred == "Murales Maradona" && attraction.name == "Via Emanuele de Deo, 46" {
                         PredictionView()
                             .onTapGesture {
                                 isUnlocking = true
+                                dismiss()
                             }
                     }
                     if pred == "Presepe" && attraction.name == "Via S. Gregorio Armeno, 14-52" {
                         PredictionView()
                             .onTapGesture {
                                 isUnlocking = true
+                                dismiss()
                             }
                     }
                 }
